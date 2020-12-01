@@ -1,21 +1,22 @@
 // importing primary modules & styling
 import { Component } from 'react';
-import firebase from './firebase.js'
+import firebase from './firebase.js';
 import './App.css';
 
 // importing components
 import Header from './components/Header.js';
-import Wishlist from './components/Wishlist.js'
+import ScrollToTop from './components/ScrollToTop.js';
+import Wishlist from './components/Wishlist.js';
 import BrowseBy from './components/BrowseBy.js';
 import WallpaperList from './components/WallpaperList.js';
-import Modal from './components/Modal.js'
+import Modal from './components/Modal.js';
 import Footer from './components/Footer.js';
 import wallpapers from './wallpapers.js';
 
 // importing font awesome icons
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faStar, faTrash, faTimes, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-library.add(faStar, faTrash, faTimes, faShoppingCart);
+import { faStar, faTrash, faTimes, faShoppingCart, faArrowUp } from '@fortawesome/free-solid-svg-icons';
+library.add(faStar, faTrash, faTimes, faShoppingCart, faArrowUp);
 
 
 
@@ -26,7 +27,8 @@ class App extends Component {
             wallpaperArray: wallpapers,
             wishlistArray: [],
             isWishlistDisplayed: false,
-            isModalDisplayed: false
+            isModalDisplayed: false,
+            isArrowDisplayed: false
         }
     }
 
@@ -168,6 +170,9 @@ class App extends Component {
                 }
                 <main>
                     <div className="wrapper main-container">
+                        <ScrollToTop 
+                            isArrowDisplayed={this.state.isArrowDisplayed}
+                        />
                         {/* dynamically render the modal (ie: only display the modal if the state of the modal is true) */}
                         {
                             this.state.isModalDisplayed &&
@@ -176,24 +181,17 @@ class App extends Component {
                                 closeModal={this.closeModal}
                             />
                         }
-                        <aside className="browse-aside">
-                            <BrowseBy 
-                                displayAllWallpapers={this.displayAllWallpapers}
-                                displayCategoryWallpapers={this.displayCategoryWallpapers}
-                            />
-                        </aside>
-                        <section className="wallpapers-section">
-                            <ul>
-                                <WallpaperList 
-                                    wishlistArray={this.state.wishlistArray}
-                                    addWallpaper={this.addWallpaper}
-                                    wallpaperArray={this.state.wallpaperArray}
-                                />
-                            </ul>
-                        </section>
+                        <BrowseBy 
+                            displayAllWallpapers={this.displayAllWallpapers}
+                            displayCategoryWallpapers={this.displayCategoryWallpapers}
+                        />
+                        <WallpaperList 
+                            wishlistArray={this.state.wishlistArray}
+                            addWallpaper={this.addWallpaper}
+                            wallpaperArray={this.state.wallpaperArray}
+                        />
                     </div>
                 </main>
-                
                 <Footer />
             </>
         );

@@ -495,6 +495,7 @@ footer a {
 	/* WISHLIST */
 	.wishlist-container {
 		text-align: center;
+		width: 45%;
 		padding: 20px 40px;
 	}
 
