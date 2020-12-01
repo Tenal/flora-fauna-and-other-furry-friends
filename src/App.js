@@ -245,6 +245,7 @@ class App extends Component {
                     displayWishlist={this.displayWishlist}
                     displayCart={this.displayCart}
                 />
+                <main>
                 {/* dynamically render the wishlist section (ie: only display the wishlist if the state of the wishlist is true) */}
                 {
                     this.state.isWishlistDisplayed &&
@@ -265,7 +266,7 @@ class App extends Component {
                         closeCart={this.closeCart}
                     />
                 }
-                <main>
+                
                     <div className="wrapper main-container">
                         <ScrollToTop 
                             isArrowDisplayed={this.state.isArrowDisplayed}
