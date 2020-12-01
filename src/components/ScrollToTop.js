@@ -17,7 +17,7 @@ class ScrollToTop extends Component {
         });
     }
 
-    // a function that displays the 'up arrow' button if the user scrolls down 400 pixels
+    // a function that displays the 'up arrow' button if the user scrolls down 400 pixels from the top of the page, and hides it if they are less than 400px down from the top of the page
     arrowVisibility = () => {
         if (window.pageYOffset > 400) {
             this.setState({
@@ -47,8 +47,8 @@ class ScrollToTop extends Component {
                     this.state.isArrowDisplayed &&
 
                     // when user clicks 'up arrow' button, call the scrollToTopOfPage function which automatically scrolls to the top of the page
-                    <button onClick={() => this.scrollToTopOfPage()}>
-                        <FontAwesomeIcon icon="arrow-up" title="back to top" className="arrow exit-btn" />
+                    <button className="exit-btn arrow" onClick={() => this.scrollToTopOfPage()}>
+                        <FontAwesomeIcon icon="arrow-up" title="back to top" />
                         <span className="sr-only">An up arrow icon, click here to scroll to the top of the page.</span>
                     </button>
                 }

@@ -19,7 +19,7 @@ const wallpapers = [
     {
         image: 'https://i.ibb.co/sttm90C/IMG-1883.jpg',
         alt: 'close-up of a flower',
-        title: 'sunflower sanctuary',
+        title: 'sunflower shrine',
         price: '$4.00',
         category: 'flora',
         wallpaperId: 'wallpaper3'
