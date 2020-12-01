@@ -436,6 +436,26 @@ footer a {
 	}
 
 	/* WISHLIST */
+	.remove-btn,
+	.exit-btn {
+		font-size: 2.5rem;
+	}
+
+	.wishlist-container h2 {
+		font-size: 3.3rem;
+		margin: 30px 0 35px 0;
+	}
+
+	/* FOOTER SECTION */
+	footer div {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	footer p:first-child {
+		margin-bottom: 8px;
+	}
 }
 
 
@@ -462,6 +482,33 @@ footer a {
 	/* MAIN SECTION */
 	.wallpaper-card {
 		width: calc(100% / 2 - 20px);
+	}
+
+	/* WISHLIST */
+	.wishlist-container {
+		text-align: center;
+		padding: 20px 40px;
+	}
+
+	.wishlist-container h2 {
+		font-size: 3.3rem;
+		width: 115px;
+		/* margin: 30px 0 50px 0; */
+	}
+
+	.wishlist-card {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+	}
+
+	.wishlist-image img {
+		width: 100%;
+	}
+
+	.remove-btn {
+		margin: 10px 0 0 0;
 	}
 }
 
@@ -490,12 +537,38 @@ footer a {
 	.browse-container {
 		font-size: 1.5rem;
 	}
-	
+
 	.wallpaper-container {
 		justify-content: center;
 	}
-	
+
 	.wallpaper-card {
-		width: calc(80% - 20px);
+		width: 80%;
+	}
+
+	/* WISHLIST */
+	.wishlist-container {
+		width: 50%;
+		padding: 20px 30px;
+	}
+
+	/* MODAL */
+	.modal-box {
+		width: 250px;
+	}
+
+	/* FOOTER SECTION */
+	footer {
+		text-align: center;
+		font-size: 1.3rem;
+	}
+
+	footer p:first-child {
+		max-width: 200px;
+		margin-bottom: 15px;
+	}
+
+	footer p:last-child {
+		max-width: 170px;
 	}
 }
