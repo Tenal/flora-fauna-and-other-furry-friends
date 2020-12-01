@@ -61,7 +61,7 @@ const wallpapers = [
         alt: 'a bee flying to lavender',
         title: 'dainty daisies',
         price: '$4.00',
-        category: 'fauna',
+        category: 'flora',
         wallpaperId: 'wallpaper8'
     },
     {

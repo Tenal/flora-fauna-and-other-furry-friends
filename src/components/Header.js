@@ -6,8 +6,13 @@ const Header = (props) => {
             <nav>
                 <div className="wrapper nav-btn-container">
                     {/* when user clicks 'star' icon, call the displayWishlist function in App.js which opens up the wishlist */}
-                    <button className="nav-star-btn" onClick={props.displayWishlist}>
+                    <button className="nav-btn" onClick={props.displayWishlist}>
                         <FontAwesomeIcon icon="star" title="wishlist" className="star" />
+                        <span className="sr-only">A star icon, click here to access your wishlist.</span>
+                    </button>
+                    {/* when user clicks 'shopping cart' icon, call the displayCart function in App.js which opens up the cart */}
+                    <button className="nav-btn">
+                        <FontAwesomeIcon icon="shopping-cart" title="cart" className="cart" />
                         <span className="sr-only">A star icon, click here to access your wishlist.</span>
                     </button>
                 </div>

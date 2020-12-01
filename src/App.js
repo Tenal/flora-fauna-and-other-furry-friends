@@ -14,8 +14,8 @@ import wallpapers from './wallpapers.js';
 
 // importing font awesome icons
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faStar, faTrash, faTimes } from '@fortawesome/free-solid-svg-icons';
-library.add(faStar, faTrash, faTimes);
+import { faStar, faTrash, faTimes, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+library.add(faStar, faTrash, faTimes, faShoppingCart);
 
 
 
@@ -72,14 +72,12 @@ class App extends Component {
     }
 
 
-
     // a function that displays all wallpapers when the user clicks 'all wallpapers' button
     displayAllWallpapers = () => {
         this.setState({
             wallpaperArray: wallpapers
         });
     }
-
 
 
     // a function that filters through the wallpapers and displays only the wallpapers that match the category the user has selected (ie: 'flora', 'fauna', or 'fluffy friends')
@@ -92,7 +90,6 @@ class App extends Component {
             wallpaperArray: filteredWallpaperArray
         });
     }
-
 
 
     // a function that adds the wallpaper to the wishlist & firebase when user clicks ‘add to wishlist’ button
@@ -170,29 +167,33 @@ class App extends Component {
                     />
                 }
                 <main>
-                    {/* dynamically render the modal (ie: only display the modal if the state of the modal is true) */}
-                    {
-                        this.state.isModalDisplayed &&
-                        <Modal 
-                            isModalDisplayed={this.state.isModalDisplayed}
-                            closeModal={this.closeModal}
-                        />
-                    }
-                    {
-
-                    }
-                    <BrowseBy 
-                        displayAllWallpapers={this.displayAllWallpapers}
-                        displayCategoryWallpapers={this.displayCategoryWallpapers}
-                    />
-                    <ul>
-                        <WallpaperList 
-                            wishlistArray={this.state.wishlistArray}
-                            addWallpaper={this.addWallpaper}
-                            wallpaperArray={this.state.wallpaperArray}
-                        />
-                    </ul>
+                    <div className="wrapper main-container">
+                        {/* dynamically render the modal (ie: only display the modal if the state of the modal is true) */}
+                        {
+                            this.state.isModalDisplayed &&
+                            <Modal 
+                                isModalDisplayed={this.state.isModalDisplayed}
+                                closeModal={this.closeModal}
+                            />
+                        }
+                        <aside className="browse-aside">
+                            <BrowseBy 
+                                displayAllWallpapers={this.displayAllWallpapers}
+                                displayCategoryWallpapers={this.displayCategoryWallpapers}
+                            />
+                        </aside>
+                        <section className="wallpapers-section">
+                            <ul>
+                                <WallpaperList 
+                                    wishlistArray={this.state.wishlistArray}
+                                    addWallpaper={this.addWallpaper}
+                                    wallpaperArray={this.state.wallpaperArray}
+                                />
+                            </ul>
+                        </section>
+                    </div>
                 </main>
+                
                 <Footer />
             </>
         );

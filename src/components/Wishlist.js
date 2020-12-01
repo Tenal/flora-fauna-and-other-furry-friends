@@ -5,9 +5,9 @@ class Wishlist extends Component {
 
     render() { 
         return (
-            <div className="wishlist-container">
+            <div className="wrapper wishlist-container">
 
-                {/* when user clicks the 'exit' icon, call the closeWishlist function in App.js */}
+                {/* when user clicks the 'exit' icon, call the closeWishlist function in App.js which closes/hides the wishlist */}
                 <button className="close-wishlist exit-btn" title="close wishlist" tabIndex="1" onClick={this.props.closeWishlist}>
                     <FontAwesomeIcon icon="times"/>
                     <span className="sr-only">An exit icon, click here to close your wishlist.</span>
@@ -25,7 +25,7 @@ class Wishlist extends Component {
                                     <p>{wallpaper.title}</p>
                                 </div>
 
-                                {/* when user clicks the 'garbage' icon, call the removeWallpaper function in App.js*/}
+                                {/* when user clicks the 'garbage' icon, call the removeWallpaper function in App.js which removes the wallpaper from the wishlist */}
                                 <button className="remove-btn" onClick={() => { this.props.removeWallpaper(wallpaper.id) }}>
                                     <FontAwesomeIcon icon="trash" title="remove wallpaper" />
                                     <span className="sr-only">Garbage can icon, click here to remove this wallpaper from your wishlist.</span>
