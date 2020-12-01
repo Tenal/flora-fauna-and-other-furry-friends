@@ -25,11 +25,12 @@ const WallpaperList = (props) => {
                                         </div> 
                                         : null
                                 }
+                                <button className="add-to-wishlist-btn" onClick={() => props.addWallpaperToWishlist(wallpaper)}>add to wishlist</button>
                             </div>
                             <h2>{wallpaper.title}</h2>
                             <p>{wallpaper.price}</p>
-                            {/* when user clicks 'add to wishlist' button, call the addWallpaper function in App.js which adds the wallpaper to the wishlist */}
-                            <button onClick={() => props.addWallpaper(wallpaper)}>add to wishlist</button>
+                            {/* when user clicks 'add to wishlist' button, call the addWallpaperToWishlist function in App.js which adds the wallpaper to the wishlist */}
+                            <button className="add-to-cart-btn" onClick={() => props.addWallpaperToCart(wallpaper)}>add to cart</button>
                         </li>
                     );
                 })}

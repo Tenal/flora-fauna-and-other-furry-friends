@@ -163,7 +163,6 @@ header nav {
 /* general layout */
 .main-container {
 	display: flex;
-	position: relative;
 }
 
 .browse-aside {
@@ -222,6 +221,21 @@ header nav {
 	position: relative;
 }
 
+.add-to-wishlist-btn {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	z-index: 10;
+	opacity: 0.85;
+	display: none;
+}
+
+.wallpaper-image:hover .add-to-wishlist-btn,
+.wallpaper-image:focus .add-to-wishlist-btn {
+	display: block;
+}
+
 .wallpaper-card {
 	width: calc(100% / 3 - 20px);
 	height: auto;
@@ -260,6 +274,7 @@ header nav {
 .wallpaper-card button:hover,
 .wallpaper-card button:focus {
 	background-color: #8EAA83;
+	opacity: 1;
 }
 
 .wallpaper-card button:active {
@@ -331,7 +346,8 @@ header nav {
 
 /* --------------- WISHLIST STYLING --------------- */
 /* general wishlist styling */
-.wishlist-container {
+.wishlist-container,
+.cart-container {
 	position: fixed;
     top: 0;
     right: 0;
@@ -516,6 +532,13 @@ footer a {
 		width: calc(100% / 2 - 20px);
 	}
 
+	.wallpaper-image .add-to-wishlist-btn {
+		z-index: 10;
+		opacity: 0.8;
+		display: block;
+		padding: 10px 20px 3px 20px;
+	}
+
 	/* WISHLIST */
 	.wishlist-container {
 		text-align: center;
@@ -526,7 +549,6 @@ footer a {
 	.wishlist-container h2 {
 		font-size: 3.3rem;
 		width: 115px;
-		/* margin: 30px 0 50px 0; */
 	}
 
 	.wishlist-card {
