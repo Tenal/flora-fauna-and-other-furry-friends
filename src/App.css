@@ -272,13 +272,21 @@ header nav {
 	align-items: center;
 }
 
+/* .modal-border {
+	border-radius: 15px;
+	border: 4px solid #9a9bd4;
+	padding: 30px 35px 50px 35px;
+} */
+
 .modal-box {
 	font-family: 'Biryani', sans-serif;
 	font-size: 1.5rem;
 	line-height: 2.7rem;
-	background-color: #8EAA83;
+	background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.9)), url('https://i.ibb.co/BqG1C9f/IMG-5114.jpg');
+	background-position: 50% 80%;
+	background-size: cover;
 	width: 300px;
-	border-radius: 25px;
+	border-radius: 15px;
 	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 	padding: 30px 35px 50px 35px;
 }
@@ -318,7 +326,7 @@ header nav {
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
-	background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8)), url('https://i.ibb.co/p20yrWZ/header-banner.jpg');
+	background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7)), url('https://i.ibb.co/p20yrWZ/header-banner.jpg');
 	background-position: 50% 80%;
 	background-size: cover;
 	background-attachment: fixed;
