@@ -439,7 +439,7 @@ footer a {
 }
 
 
-/* MINOR BREAKPOINT 1: main section wallpapers */
+/* MINOR BREAKPOINT 1: extra breakpoint to aid in fluid responsiveness */
 @media (max-width: 695px) {
 	/* HEADER SECTION */
 	header {
@@ -460,7 +460,9 @@ footer a {
 	}
 
 	/* MAIN SECTION */
-	
+	.wallpaper-card {
+		width: calc(100% / 2 - 20px);
+	}
 }
 
 
@@ -482,5 +484,18 @@ footer a {
 
 	.nav-btn {
 		font-size: 2.5rem;
+	}
+
+	/* MAIN SECTION */
+	.browse-container {
+		font-size: 1.5rem;
+	}
+	
+	.wallpaper-container {
+		justify-content: center;
+	}
+	
+	.wallpaper-card {
+		width: calc(80% - 20px);
 	}
 }
