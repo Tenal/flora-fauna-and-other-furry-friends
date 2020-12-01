@@ -157,7 +157,7 @@ header nav {
 
 /* browse (aside) section */
 .browse-container {
-	margin-bottom: 50px;
+	margin-bottom: 40px;
 	font-size: 1.7rem;
 	font-family: 'Biryani', sans-serif;
 }
@@ -171,6 +171,7 @@ header nav {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
+	font-size: 1.5rem;
 }
 
 .browse-btns button {
@@ -317,11 +318,15 @@ header nav {
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
+	background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8)), url('https://i.ibb.co/p20yrWZ/header-banner.jpg');
+	background-position: 50% 80%;
+	background-size: cover;
+	background-attachment: fixed;
 }
 
 .wishlist-container h2 {
 	font-family: 'Great Vibes', cursive;
-	font-size: 3.5rem;
+	font-size: 4rem;
 	margin: 30px 0 50px 0;
 }
 
@@ -376,6 +381,7 @@ footer div {
 	justify-content: space-between;
 	margin-top: 60px;
 }
+
 footer p {
 	font-family: 'Biryani', sans-serif;
 	font-size: 1.5rem;
@@ -385,4 +391,96 @@ footer p {
 footer a {
 	font-style: italic;
 	opacity: 0.4;
+}
+
+
+/* --------------- MEDIA QUERIES --------------- */
+/* MAJOR BREAKPOINT 1: small desktop & portrait tablet */
+@media (max-width: 950px) {
+	/* HEADER SECTION */
+	header {
+		margin-bottom: 40px;
+	}
+
+	/* MAIN SECTION */
+	.main-container {
+		flex-direction: column;
+	}
+
+	.browse-aside {
+		width: 100%;
+		margin-right: 0;
+		text-align: center;
+	}
+
+	.browse-btns {
+		align-items: center;
+	}
+
+	.wallpapers-section {
+		width: 100%;
+	}
+}
+
+
+/* MAJOR BREAKPOINT 2: portrait tablet & landscape phone */
+@media (max-width: 795px) {
+	/* HEADER SECTION */
+	h1 {
+		font-size: 7rem;
+	}
+
+	/* MAIN SECTION */
+	.wallpaper-card h2 {
+		font-size: 1.7rem;
+	}
+
+	/* WISHLIST */
+}
+
+
+/* MINOR BREAKPOINT 1: main section wallpapers */
+@media (max-width: 695px) {
+	/* HEADER SECTION */
+	header {
+		min-height: 57vh;
+	}
+	
+	h1 {
+		font-size: 5rem;
+		max-width: 500px;
+	}
+
+	header nav {
+		height: 45px;
+	}
+
+	.nav-btn {
+		font-size: 2.5rem;
+	}
+
+	/* MAIN SECTION */
+	
+}
+
+
+/* MAJOR BREAKPOINT 3: landscape phone & down */
+@media (max-width: 480px) {
+	/* HEADER SECTION */
+	header {
+		min-height: 50vh;
+	}
+
+	h1 {
+		font-size: 4.5rem;
+		max-width: 254px;
+	}
+
+	header nav {
+		height: 45px;
+	}
+
+	.nav-btn {
+		font-size: 2.5rem;
+	}
 }
