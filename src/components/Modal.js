@@ -5,7 +5,7 @@ const Modal = (props) => {
         <div className="wrapper modal">
             <div className="modal-box">
                 {/* when user clicks 'exit' icon, call the closeModal function in App.js which closes the pop-up modal */}
-                <button className="close-modal exit-btn" title="close modal" tabIndex="1" onClick={props.closeModal}>
+                <button className="exit-modal exit-btn icon-btn" title="close modal" tabIndex="1" onClick={props.closeModal}>
                     <FontAwesomeIcon icon="times" />
                     <span className="sr-only">An exit icon, click here to close this pop-up modal.</span>
                 </button>

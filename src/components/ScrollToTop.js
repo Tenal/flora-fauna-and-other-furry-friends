@@ -47,7 +47,7 @@ class ScrollToTop extends Component {
                     this.state.isArrowDisplayed &&
 
                     // when user clicks 'up arrow' button, call the scrollToTopOfPage function which automatically scrolls to the top of the page
-                    <button className="exit-btn arrow" onClick={() => this.scrollToTopOfPage()}>
+                    <button className="exit-btn arrow icon-btn" onClick={() => this.scrollToTopOfPage()}>
                         <FontAwesomeIcon icon="arrow-up" title="back to top" />
                         <span className="sr-only">An up arrow icon, click here to scroll to the top of the page.</span>
                     </button>
