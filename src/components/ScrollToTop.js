@@ -9,10 +9,10 @@ class ScrollToTop extends Component {
         };
     }
 
-    // invoked after the 'up arrow' button is rendered for the first time (note: this part of the component was added based on information found online)
+    // invoked after the 'up arrow' button is rendered for the first time (note: this function was added based on information found online)
     componentDidMount() {
         const scrollComponent = this;
-        document.addEventListener("scroll", function (e) {
+        document.addEventListener("scroll", () => {
             scrollComponent.arrowVisibility();
         });
     }

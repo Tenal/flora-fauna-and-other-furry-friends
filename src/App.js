@@ -7,7 +7,7 @@ import './App.css';
 import Header from './components/Header.js';
 import ScrollToTop from './components/ScrollToTop.js';
 import Wishlist from './components/Wishlist.js';
-import Cart from './components/Wishlist.js';
+import Cart from './components/Cart.js';
 import BrowseBy from './components/BrowseBy.js';
 import WallpaperList from './components/WallpaperList.js';
 import Modal from './components/Modal.js';
@@ -28,6 +28,7 @@ class App extends Component {
             wallpaperArray: wallpapers,
             wishlistArray: [],
             cartArray: [],
+            cartSubtotal: 0,
             isWishlistDisplayed: false,
             isCartDisplayed: false,
             isModalDisplayed: false,
@@ -41,23 +42,24 @@ class App extends Component {
         const dbWishlistRef = firebase.database().ref('wishlist');
         const dbCartRef = firebase.database().ref('cart');
         
-        // pull any existing data from the database for WISHLIST
+        // WISHLIST
         dbWishlistRef.on('value', (data) => {
-            const firebaseDataObj = data.val();
+            // pull any existing data from the database
+            const firebaseWishlistObject = data.val();
 
             let newWishlistArray = [];
 
             // loop through the object returned from the wishlist database
-            for (let propertyKey in firebaseDataObj) {
+            for (let propertyKey in firebaseWishlistObject) {
                 // extract the object key and all internal property values from the object
-                const imageVal = firebaseDataObj[propertyKey].image;
-                const altVal = firebaseDataObj[propertyKey].alt;
-                const titleVal = firebaseDataObj[propertyKey].title;
-                const priceVal = firebaseDataObj[propertyKey].price;
-                const idVal = firebaseDataObj[propertyKey].wallpaperId;
+                const imageVal = firebaseWishlistObject[propertyKey].image;
+                const altVal = firebaseWishlistObject[propertyKey].alt;
+                const titleVal = firebaseWishlistObject[propertyKey].title;
+                const priceVal = firebaseWishlistObject[propertyKey].price;
+                const idVal = firebaseWishlistObject[propertyKey].wallpaperId;
 
                 // reformat the object
-                const formattedObj = {
+                const formattedWishlistObject = {
                     id: propertyKey,
                     image: imageVal,
                     alt: altVal,
@@ -67,32 +69,34 @@ class App extends Component {
                 }
 
                 // push the newly formatted object into the new wishlist array
-                newWishlistArray.push(formattedObj);
+                newWishlistArray.push(formattedWishlistObject);
             }
+
             // update the state of the wishlist array with the new wishlist array (ie: firebase data)
             this.setState({
                 wishlistArray: newWishlistArray
             })
         })
 
-        // pull any existing data from the database for CART
+
+        // CART
         dbCartRef.on('value', (data) => {
-            const firebaseDataObj = data.val();
-            console.log('firebase data object', firebaseDataObj);
+            // pull any existing data from the database
+            const firebaseCartObject = data.val();
 
             let newCartArray = [];
 
             // loop through the object returned from the database
-            for (let propertyKey in firebaseDataObj) {
+            for (let propertyKey in firebaseCartObject) {
                 // extract the object key and all internal property values from the object
-                const imageVal = firebaseDataObj[propertyKey].image;
-                const altVal = firebaseDataObj[propertyKey].alt;
-                const titleVal = firebaseDataObj[propertyKey].title;
-                const priceVal = firebaseDataObj[propertyKey].price;
-                const idVal = firebaseDataObj[propertyKey].wallpaperId;
+                const imageVal = firebaseCartObject[propertyKey].image;
+                const altVal = firebaseCartObject[propertyKey].alt;
+                const titleVal = firebaseCartObject[propertyKey].title;
+                const priceVal = firebaseCartObject[propertyKey].price;
+                const idVal = firebaseCartObject[propertyKey].wallpaperId;
 
                 // reformat the object
-                const formattedObj = {
+                const formattedCartObject = {
                     id: propertyKey,
                     image: imageVal,
                     alt: altVal,
@@ -102,12 +106,30 @@ class App extends Component {
                 }
 
                 // push the newly formatted object into the new wishlist array
-                newCartArray.push(formattedObj);
+                newCartArray.push(formattedCartObject);
             }
-            // update the state of the wishlist array with the new wishlist array (ie: firebase data)
-            this.setState({
-                cartArray: newCartArray
-            })
+            
+            // if at least one object exists in the firebase cart, loop through the object(s) & add their prices together
+            if (firebaseCartObject !== null) {
+                let price = 0;
+                newCartArray.forEach((cartObject) => {
+                    price = price + (cartObject.price)
+                    console.log('PRICE:', price)
+                });
+
+                // update the state of the cart array & cart subtotal
+                this.setState({
+                    cartArray: newCartArray,
+                    cartSubtotal: price
+                });
+                console.log('cart subtotal 1.0', this.state.cartSubtotal)
+            } else {
+                this.setState({
+                    cartArray: [],
+                    cartSubtotal: 0
+                });
+            }
+            console.log('cart subtotal 2.0', this.state.cartSubtotal)
         })
     }
 
@@ -218,9 +240,14 @@ class App extends Component {
         dbCartRef.push(wallpaperToBeAdded);
     }
 
+    // a function that removes the wallpaper from the cart & firebase when user clicks the 'garbage' icon (ie: remove button)
+    removeWallpaperFromCart = (wallpaperId) => {
+        const dbCartRef = firebase.database().ref('cart');
+        dbCartRef.child(wallpaperId).remove();
+    }
+
     // a function that displays the cart when user clicks on the 'shopping cart' icon (ie: cart button)
     displayCart = () => {
-        console.log('you clicked the cart!');
         this.setState({
             isCartDisplayed: true
         });
@@ -228,7 +255,6 @@ class App extends Component {
 
     // a function that closes the cart when user clicks on the 'exit' icon
     closeCart = () => {
-        console.log('you are closing the cart');
         this.setState({
             isCartDisplayed: false
         });
@@ -238,7 +264,7 @@ class App extends Component {
 
 
 
-    render() { 
+    render() {
         return (
             <>
                 <Header 
@@ -249,24 +275,29 @@ class App extends Component {
                     <div className="wrapper main-container">
                     {/* dynamically render the wishlist section (ie: only display the wishlist if the state of the wishlist is true) */}
                     {
-                        this.state.isWishlistDisplayed &&
+                        this.state.isWishlistDisplayed
+                        ?
                         <Wishlist 
                             wishlistArray={this.state.wishlistArray}
                             removeWallpaperFromWishlist={this.removeWallpaperFromWishlist}
                             isWishlistDisplayed={this.state.isWishlistDisplayed}
                             closeWishlist={this.closeWishlist}
                         />
+                        : null
                     }
-                    {/* dynamically render the cart section (ie: only display the cart if the state of the cart is true) */}
                     {
-                        this.state.isCartDisplayed &&
+                        this.state.isCartDisplayed 
+                        ?
                         <Cart
                             cartArray={this.state.cartArray}
-                            // removeWallpaperFromWishlist={this.removeWallpaperFromWishlist}
+                            removeWallpaperFromCart={this.removeWallpaperFromCart}
                             isCartDisplayed={this.state.isCartDisplayed}
                             closeCart={this.closeCart}
+                            cartSubtotal={this.state.cartSubtotal}
                         />
+                        : null
                     }
+                    {/* dynamically render the cart section (ie: only display the cart if the state of the cart is true) */}
                     {/* dynamically render the modal (ie: only display the modal if the state of the modal is true) */}
                     {
                         this.state.isModalDisplayed &&
@@ -279,6 +310,7 @@ class App extends Component {
                         isArrowDisplayed={this.state.isArrowDisplayed}
                     />
                     <BrowseBy 
+                        // wallpaperArray={this.state.wallpaperArray}
                         displayAllWallpapers={this.displayAllWallpapers}
                         displayCategoryWallpapers={this.displayCategoryWallpapers}
                     />
