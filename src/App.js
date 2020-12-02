@@ -134,6 +134,7 @@ class App extends Component {
     }
 
 
+
     // BROWSE/FILTER FUNCTIONS ---------------------------------
 
     // a function that displays all wallpapers when the user clicks 'all wallpapers' button
@@ -152,14 +153,6 @@ class App extends Component {
             wallpaperArray: wallpaperArrayByCategory
         });
     }
-
-
-
-
-
-
-
-
 
 
 
@@ -224,12 +217,6 @@ class App extends Component {
 
 
 
-
-
-
-
-
-
     // CART FUNCTIONS ---------------------------------
 
     // a function that adds the wallpaper to the cart & firebase when user clicks ‘add to cart button
@@ -239,6 +226,7 @@ class App extends Component {
 
         dbCartRef.push(wallpaperToBeAdded);
     }
+
 
     // a function that removes the wallpaper from the cart & firebase when user clicks the 'garbage' icon (ie: remove button)
     removeWallpaperFromCart = (wallpaperId) => {
@@ -262,8 +250,6 @@ class App extends Component {
 
 
 
-
-
     render() {
         return (
             <>
@@ -275,19 +261,17 @@ class App extends Component {
                     <div className="wrapper main-container">
                     {/* dynamically render the wishlist section (ie: only display the wishlist if the state of the wishlist is true) */}
                     {
-                        this.state.isWishlistDisplayed
-                        ?
+                        this.state.isWishlistDisplayed &&
                         <Wishlist 
                             wishlistArray={this.state.wishlistArray}
                             removeWallpaperFromWishlist={this.removeWallpaperFromWishlist}
                             isWishlistDisplayed={this.state.isWishlistDisplayed}
                             closeWishlist={this.closeWishlist}
                         />
-                        : null
                     }
+                    {/* dynamically render the cart section (ie: only display the cart if the state of the cart is true) */}
                     {
-                        this.state.isCartDisplayed 
-                        ?
+                        this.state.isCartDisplayed &&
                         <Cart
                             cartArray={this.state.cartArray}
                             removeWallpaperFromCart={this.removeWallpaperFromCart}
@@ -295,9 +279,7 @@ class App extends Component {
                             closeCart={this.closeCart}
                             cartSubtotal={this.state.cartSubtotal}
                         />
-                        : null
                     }
-                    {/* dynamically render the cart section (ie: only display the cart if the state of the cart is true) */}
                     {/* dynamically render the modal (ie: only display the modal if the state of the modal is true) */}
                     {
                         this.state.isModalDisplayed &&
@@ -310,11 +292,11 @@ class App extends Component {
                         isArrowDisplayed={this.state.isArrowDisplayed}
                     />
                     <BrowseBy 
-                        // wallpaperArray={this.state.wallpaperArray}
                         displayAllWallpapers={this.displayAllWallpapers}
                         displayCategoryWallpapers={this.displayCategoryWallpapers}
                     />
                     <WallpaperList 
+                        // addWallpaperToCartOrWishlist={this.addWallpaperToCartOrWishlist}
                         wallpaperArray={this.state.wallpaperArray}
                         wishlistArray={this.state.wishlistArray}
                         cartArray={this.state.cartArray}
