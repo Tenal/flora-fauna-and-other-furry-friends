@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Modal = (props) => {
     return (
-        <div className="wrapper modal">
+        <div className="modal">
             <div className="modal-box">
                 {/* when user clicks 'exit' icon, call the closeModal function in App.js which closes the pop-up modal */}
                 <button className="exit-modal exit-btn icon-btn" title="close modal" tabIndex="1" onClick={props.closeModal}>

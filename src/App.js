@@ -123,11 +123,11 @@ class App extends Component {
 
     // a function that filters through the wallpapers and displays only the wallpapers that match the category the user has selected (ie: 'flora', 'fauna', or 'fluffy friends')
     displayCategoryWallpapers = (category) => {
-        const filteredWallpaperArray = wallpapers.filter((wallpaper) => {
+        const wallpaperArrayByCategory = wallpapers.filter((wallpaper) => {
             return wallpaper.category === category
         })
         this.setState({
-            wallpaperArray: filteredWallpaperArray
+            wallpaperArray: wallpaperArrayByCategory
         });
     }
 
@@ -246,50 +246,49 @@ class App extends Component {
                     displayCart={this.displayCart}
                 />
                 <main>
-                {/* dynamically render the wishlist section (ie: only display the wishlist if the state of the wishlist is true) */}
-                {
-                    this.state.isWishlistDisplayed &&
-                    <Wishlist 
-                        wishlistArray={this.state.wishlistArray}
-                        removeWallpaperFromWishlist={this.removeWallpaperFromWishlist}
-                        isWishlistDisplayed={this.state.isWishlistDisplayed}
-                        closeWishlist={this.closeWishlist}
-                    />
-                }
-                {/* dynamically render the cart section (ie: only display the cart if the state of the cart is true) */}
-                {
-                    this.state.isCartDisplayed &&
-                    <Cart
-                        cartArray={this.state.cartArray}
-                        // removeWallpaperFromWishlist={this.removeWallpaperFromWishlist}
-                        isCartDisplayed={this.state.isCartDisplayed}
-                        closeCart={this.closeCart}
-                    />
-                }
-                
                     <div className="wrapper main-container">
-                        <ScrollToTop 
-                            isArrowDisplayed={this.state.isArrowDisplayed}
-                        />
-                        {/* dynamically render the modal (ie: only display the modal if the state of the modal is true) */}
-                        {
-                            this.state.isModalDisplayed &&
-                            <Modal 
-                                isModalDisplayed={this.state.isModalDisplayed}
-                                closeModal={this.closeModal}
-                            />
-                        }
-                        <BrowseBy 
-                            displayAllWallpapers={this.displayAllWallpapers}
-                            displayCategoryWallpapers={this.displayCategoryWallpapers}
-                        />
-                        <WallpaperList 
-                            wallpaperArray={this.state.wallpaperArray}
+                    {/* dynamically render the wishlist section (ie: only display the wishlist if the state of the wishlist is true) */}
+                    {
+                        this.state.isWishlistDisplayed &&
+                        <Wishlist 
                             wishlistArray={this.state.wishlistArray}
-                            cartArray={this.state.cartArray}
-                            addWallpaperToWishlist={this.addWallpaperToWishlist}
-                            addWallpaperToCart={this.addWallpaperToCart}
+                            removeWallpaperFromWishlist={this.removeWallpaperFromWishlist}
+                            isWishlistDisplayed={this.state.isWishlistDisplayed}
+                            closeWishlist={this.closeWishlist}
                         />
+                    }
+                    {/* dynamically render the cart section (ie: only display the cart if the state of the cart is true) */}
+                    {
+                        this.state.isCartDisplayed &&
+                        <Cart
+                            cartArray={this.state.cartArray}
+                            // removeWallpaperFromWishlist={this.removeWallpaperFromWishlist}
+                            isCartDisplayed={this.state.isCartDisplayed}
+                            closeCart={this.closeCart}
+                        />
+                    }
+                    {/* dynamically render the modal (ie: only display the modal if the state of the modal is true) */}
+                    {
+                        this.state.isModalDisplayed &&
+                        <Modal 
+                        isModalDisplayed={this.state.isModalDisplayed}
+                        closeModal={this.closeModal}
+                        />
+                    }
+                    <ScrollToTop 
+                        isArrowDisplayed={this.state.isArrowDisplayed}
+                    />
+                    <BrowseBy 
+                        displayAllWallpapers={this.displayAllWallpapers}
+                        displayCategoryWallpapers={this.displayCategoryWallpapers}
+                    />
+                    <WallpaperList 
+                        wallpaperArray={this.state.wallpaperArray}
+                        wishlistArray={this.state.wishlistArray}
+                        cartArray={this.state.cartArray}
+                        addWallpaperToWishlist={this.addWallpaperToWishlist}
+                        addWallpaperToCart={this.addWallpaperToCart}
+                    />
                     </div>
                 </main>
                 <Footer />
