@@ -1,5 +1,4 @@
 import { Component } from 'react';
-// import firebase from '../firebase';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Cart extends Component {
@@ -40,7 +39,13 @@ class Cart extends Component {
                             </li>
                         )
                     })}
-                    <p className="cart-subtotal">Your Subtotal: <span>${this.props.cartSubtotal}</span></p>
+                    {/* render the cart subtotal if there is at least one wallpaper in the cart */}
+                    {
+                        (this.props.cartArray.length >= 1)
+                        ? 
+                            <p className="cart-subtotal">Your Subtotal: <span>${this.props.cartSubtotal.toFixed(2)}</span></p>
+                        : null
+                    }
                 </ul>
 
             </div>

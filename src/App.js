@@ -20,7 +20,6 @@ import { faStar, faTrash, faTimes, faShoppingCart, faArrowUp } from '@fortawesom
 library.add(faStar, faTrash, faTimes, faShoppingCart, faArrowUp);
 
 
-
 class App extends Component {
     constructor() {
         super();
@@ -75,9 +74,8 @@ class App extends Component {
             // update the state of the wishlist array with the new wishlist array (ie: firebase data)
             this.setState({
                 wishlistArray: newWishlistArray
-            })
-        })
-
+            });
+        });
 
         // CART
         dbCartRef.on('value', (data) => {
@@ -114,7 +112,6 @@ class App extends Component {
                 let price = 0;
                 newCartArray.forEach((cartObject) => {
                     price = price + (cartObject.price)
-                    console.log('PRICE:', price)
                 });
 
                 // update the state of the cart array & cart subtotal
@@ -122,17 +119,14 @@ class App extends Component {
                     cartArray: newCartArray,
                     cartSubtotal: price
                 });
-                console.log('cart subtotal 1.0', this.state.cartSubtotal)
             } else {
                 this.setState({
                     cartArray: [],
                     cartSubtotal: 0
                 });
             }
-            console.log('cart subtotal 2.0', this.state.cartSubtotal)
-        })
+        });
     }
-
 
 
     // BROWSE/FILTER FUNCTIONS ---------------------------------
@@ -155,7 +149,6 @@ class App extends Component {
     }
 
 
-
     // WISHLIST FUNCTIONS ---------------------------------
 
     // a function that adds the wallpaper to the wishlist & firebase when user clicks ‘add to wishlist’ button
@@ -166,7 +159,7 @@ class App extends Component {
         // filter through wishlist array to see if the wallpaper has already been added to the wishlist (ie: check to see if the wallpaper ID already exists within the array)
         const filteredWishlistArray = this.state.wishlistArray.filter((wishlistWallpaper) => {
             return wishlistWallpaper.wallpaperId === wallpaperToBeAdded.wallpaperId
-        })
+        });
 
         // If the wallpaper has already been added to the wishlist (ie: if the ID exists in the array), then display a modal informing the user. Else, add the wallpaper object to the wishlist array
         if (filteredWishlistArray.length >= 1) {
@@ -176,13 +169,11 @@ class App extends Component {
         }
     }
 
-
     // a function that removes the wallpaper from the wishlist & firebase when user clicks the 'garbage' icon (ie: remove button)
     removeWallpaperFromWishlist = (wallpaperId) => {
         const dbWishlistRef = firebase.database().ref('wishlist');
         dbWishlistRef.child(wallpaperId).remove();
     }
-
 
     // a function that displays the wishlist when user clicks on the 'star' icon (ie: wishlist button)
     displayWishlist = () => {
@@ -191,7 +182,6 @@ class App extends Component {
         });
     }
 
-
     // a function that closes the wishlist when user clicks on the 'exit' icon
     closeWishlist = () => {
         this.setState({
@@ -199,14 +189,12 @@ class App extends Component {
         });
     }
 
-
     // a function that displays the modal when user attempts to add a wallpaper to the wishlist that has already been added
     displayModal = () => {
         this.setState({
             isModalDisplayed: !this.state.isModalDisplayed
         });
     }
-
 
     // a function that closes the modal when user clicks on the 'exit' icon
     closeModal = () => {
@@ -216,14 +204,12 @@ class App extends Component {
     }
 
 
-
     // CART FUNCTIONS ---------------------------------
 
     // a function that adds the wallpaper to the cart & firebase when user clicks ‘add to cart button
     addWallpaperToCart = (wallpaperToBeAdded) => {
         // reference to database
         const dbCartRef = firebase.database().ref('cart');
-
         dbCartRef.push(wallpaperToBeAdded);
     }
 
@@ -254,6 +240,7 @@ class App extends Component {
                 <Header 
                     displayWishlist={this.displayWishlist}
                     displayCart={this.displayCart}
+                    cartArray={this.state.cartArray}
                 />
                 <main>
                     <div className="wrapper main-container">
@@ -294,7 +281,6 @@ class App extends Component {
                         displayCategoryWallpapers={this.displayCategoryWallpapers}
                     />
                     <WallpaperList 
-                        // addWallpaperToCartOrWishlist={this.addWallpaperToCartOrWishlist}
                         wallpaperArray={this.state.wallpaperArray}
                         wishlistArray={this.state.wishlistArray}
                         cartArray={this.state.cartArray}

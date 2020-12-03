@@ -229,10 +229,29 @@ header nav {
 	box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.5);
 }
 
+/* navigation styling */
 .nav-btn-container {
 	display: flex;
 	justify-content: flex-end;
 	padding: 0 10px;
+}
+
+.cart-btn {
+	position: relative;
+}
+
+.header-item-count {
+	position: absolute;
+	top: -2px;
+	right: -6px;
+	background-color: #8EAA83;
+	box-shadow: 0 0 3px black;
+	width: 17px;
+	height: 17px;
+	padding: 2.5px;
+	border-radius: 50%;
+	text-align: center;
+	font-size: 1.2rem;
 }
 
 
@@ -457,7 +476,7 @@ header nav {
 
 .cart-subtotal {
 	border-top: 1px solid black;
-	padding: 15px 10px 15px 0;
+	padding: 15px 10px 50px 0;
 	margin-top: 55px;
 	text-align: right;
 	font-size: 1.7rem;
@@ -562,7 +581,7 @@ footer a {
 	}
 
 	.nav-btn {
-		font-size: 2.5rem;
+		font-size: 2.7rem;
 	}
 
 	/* MAIN SECTION */

@@ -2,7 +2,6 @@ import { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Wishlist extends Component {
-
     render() { 
         return (
             <div className="wrapper wishlist-container">

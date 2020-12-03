@@ -11,10 +11,20 @@ const Header = (props) => {
                         <span className="sr-only">A star icon, click here to access your wishlist.</span>
                     </button>
                     {/* when user clicks 'shopping cart' icon, call the displayCart function in App.js which opens up the cart */}
-                    <button className="nav-btn icon-btn" onClick={props.displayCart}>
-                        <FontAwesomeIcon icon="shopping-cart" title="cart" className="cart" />
-                        <span className="sr-only">A cart icon, click here to access your cart.</span>
-                    </button>
+                    <div className="cart-btn">
+                        <button className="nav-btn icon-btn" onClick={props.displayCart}>
+                            <FontAwesomeIcon icon="shopping-cart" title="cart" className="cart" />
+                            <span className="sr-only">A cart icon, click here to access your cart.</span>
+                        </button>
+                        <div className="header-item-count">
+                            {
+                                (props.cartArray.length >= 1)
+                                ?
+                                <p>{props.cartArray.length}</p>
+                                : null
+                            }
+                        </div>
+                    </div>
                 </div>
             </nav>
             <div className="wrapper heading-container">
