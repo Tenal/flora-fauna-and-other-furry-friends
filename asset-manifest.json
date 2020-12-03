@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/tenal-bourchier-project-five/static/css/main.2d4f5111.chunk.css",
+    "main.js": "/tenal-bourchier-project-five/static/js/main.27986ebd.chunk.js",
+    "main.js.map": "/tenal-bourchier-project-five/static/js/main.27986ebd.chunk.js.map",
+    "runtime-main.js": "/tenal-bourchier-project-five/static/js/runtime-main.082f1cfb.js",
+    "runtime-main.js.map": "/tenal-bourchier-project-five/static/js/runtime-main.082f1cfb.js.map",
+    "static/js/2.f9d204eb.chunk.js": "/tenal-bourchier-project-five/static/js/2.f9d204eb.chunk.js",
+    "static/js/2.f9d204eb.chunk.js.map": "/tenal-bourchier-project-five/static/js/2.f9d204eb.chunk.js.map",
+    "static/js/3.c5b1ad19.chunk.js": "/tenal-bourchier-project-five/static/js/3.c5b1ad19.chunk.js",
+    "static/js/3.c5b1ad19.chunk.js.map": "/tenal-bourchier-project-five/static/js/3.c5b1ad19.chunk.js.map",
+    "index.html": "/tenal-bourchier-project-five/index.html",
+    "static/css/main.2d4f5111.chunk.css.map": "/tenal-bourchier-project-five/static/css/main.2d4f5111.chunk.css.map",
+    "static/js/2.f9d204eb.chunk.js.LICENSE.txt": "/tenal-bourchier-project-five/static/js/2.f9d204eb.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.082f1cfb.js",
+    "static/js/2.f9d204eb.chunk.js",
+    "static/css/main.2d4f5111.chunk.css",
+    "static/js/main.27986ebd.chunk.js"
+  ]
+}
