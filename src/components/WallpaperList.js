@@ -13,7 +13,7 @@ const WallpaperList = (props) => {
 
                     return (
                         <li key={wallpaper.wallpaperId} className="wallpaper-card">
-                            <div className="wallpaper-image">
+                            <div className="wallpaper-image" tabIndex="0">
                                 <img src={wallpaper.image} alt={wallpaper.alt} />
                                 {/* IF the wallpaper being displayed has been added to the wishlist by the user, then show a star icon on the image. If it has NOT been added to the wishlist, do not display a star icon on the image. */}
                                 {
@@ -31,7 +31,7 @@ const WallpaperList = (props) => {
                             <h2>{wallpaper.title}</h2>
                             <p>${wallpaper.price}</p>
                             {/* when user clicks 'add to cart' button, call the addWallpaperToCartorWishlist function in App.js & pass in 'cart' as an argument in order to add the wallpaper to the cart */}
-                            <button className="add-to-btn" onClick={() => props.addWallpaperToCartorWishlist(wallpaper, 'cart')}>add to cart</button>
+                            <button className="add-to-btn" tabIndex="0" onClick={() => props.addWallpaperToCartorWishlist(wallpaper, 'cart')}>add to cart</button>
                         </li>
                     );
                 })}

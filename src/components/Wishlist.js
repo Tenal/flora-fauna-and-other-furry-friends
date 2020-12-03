@@ -6,7 +6,7 @@ const Wishlist = (props) => {
         <div className="wrapper wishlist-container">
 
             {/* when user clicks the 'exit' icon, call the closeCartorWishlist function in App.js & pass in 'wishlist' as an argument in order to close/hide the wishlist */}
-            <button className="exit-btn icon-btn" title="close wishlist" tabIndex="1" onClick={() => {props.closeCartorWishlist('wishlist')}}>
+            <button className="exit-btn icon-btn" title="close wishlist" tabIndex="0" onClick={() => {props.closeCartorWishlist('wishlist')}}>
                 <FontAwesomeIcon icon="times"/>
                 <span className="sr-only">An exit icon, click here to close your wishlist.</span>
             </button>
