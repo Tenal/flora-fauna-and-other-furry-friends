@@ -15,6 +15,7 @@ class Cart extends Component {
                 </button>
 
                 <h2>Your Cart</h2>
+                <p className="cart-item-count"><span>{this.props.cartArray.length}</span> item(s) in cart</p>
 
                 {/* map through the cart array and display the image, title, price & remove button for each wallpaper in an individual card */}
                 <ul>
@@ -27,10 +28,10 @@ class Cart extends Component {
                                 <div className="text-container">
                                     <div className="title-and-price">
                                         <p>{wallpaper.title}</p>
-                                        <p>${wallpaper.price}.00</p>
+                                        <p>${wallpaper.price}</p>
                                     </div>
                                     {/* when user clicks the 'garbage' icon, call the removeWallpaperFromCart function in App.js which removes the wallpaper from the cart */}
-                                    <button className="remove-btn icon-btn" onClick={() => { this.props.removeWallpaperFromCart(wallpaper.id) }}>
+                                    <button className="icon-btn" onClick={() => { this.props.removeWallpaperFromCart(wallpaper.id) }}>
                                         <FontAwesomeIcon icon="trash" title="remove wallpaper" />
                                         <span className="sr-only">Garbage can icon, click here to remove this wallpaper from your cart.</span>
                                     </button>
@@ -39,7 +40,7 @@ class Cart extends Component {
                             </li>
                         )
                     })}
-                    <p className="cart-subtotal">Your Subtotal: <span>${this.props.cartSubtotal}.00</span></p>
+                    <p className="cart-subtotal">Your Subtotal: <span>${this.props.cartSubtotal}</span></p>
                 </ul>
 
             </div>

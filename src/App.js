@@ -227,7 +227,6 @@ class App extends Component {
         dbCartRef.push(wallpaperToBeAdded);
     }
 
-
     // a function that removes the wallpaper from the cart & firebase when user clicks the 'garbage' icon (ie: remove button)
     removeWallpaperFromCart = (wallpaperId) => {
         const dbCartRef = firebase.database().ref('cart');
@@ -247,7 +246,6 @@ class App extends Component {
             isCartDisplayed: false
         });
     }
-
 
 
     render() {
