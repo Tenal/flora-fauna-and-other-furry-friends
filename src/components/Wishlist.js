@@ -24,8 +24,8 @@ class Wishlist extends Component {
                                     <p>{wallpaper.title}</p>
                                 </div>
 
-                                {/* when user clicks the 'garbage' icon, call the removeWallpaperFromWishlist function in App.js which removes the wallpaper from the wishlist */}
-                                <button className="icon-btn remove-wishlist-btn" onClick={() => { this.props.removeWallpaperFromWishlist(wallpaper.id) }}>
+                                {/* when user clicks the 'garbage' icon, call the removeWallpaperFromCartorWishlist function in App.js which will remove the wallpaper from the wishlist */}
+                                <button className="icon-btn remove-wishlist-btn" onClick={() => { this.props.removeWallpaperFromCartorWishlist(wallpaper.id, 'wishlist') }}>
                                     <FontAwesomeIcon icon="trash" title="remove wallpaper" />
                                     <span className="sr-only">Garbage can icon, click here to remove this wallpaper from your wishlist.</span>
                                 </button>

@@ -29,8 +29,8 @@ class Cart extends Component {
                                         <p>{wallpaper.title}</p>
                                         <p>${wallpaper.price}</p>
                                     </div>
-                                    {/* when user clicks the 'garbage' icon, call the removeWallpaperFromCart function in App.js which removes the wallpaper from the cart */}
-                                    <button className="icon-btn" onClick={() => { this.props.removeWallpaperFromCart(wallpaper.id) }}>
+                                    {/* when user clicks the 'garbage' icon, call the removeWallpaperFromCartorWishlist function in App.js which will remove the wallpaper from the cart */}
+                                    <button className="icon-btn" onClick={() => { this.props.removeWallpaperFromCartorWishlist(wallpaper.id, 'cart') }}>
                                         <FontAwesomeIcon icon="trash" title="remove wallpaper" />
                                         <span className="sr-only">Garbage can icon, click here to remove this wallpaper from your cart.</span>
                                     </button>

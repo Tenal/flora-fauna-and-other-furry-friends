@@ -131,49 +131,24 @@ class App extends Component {
 
     // BROWSE/FILTER FUNCTIONS ---------------------------------
 
-    // a function that displays all wallpapers when the user clicks 'all wallpapers' button
-    displayAllWallpapers = () => {
-        this.setState({
-            wallpaperArray: wallpapers
-        });
-    }
-
-    // a function that filters through the wallpapers and displays only the wallpapers that match the category the user has selected (ie: 'flora', 'fauna', or 'fluffy friends')
+    // (1) a function that filters through the wallpapers and displays only the wallpapers that match the category the user has selected (ie: 'all', 'flora', 'fauna', or 'fluffy friends')
     displayCategoryWallpapers = (category) => {
-        const wallpaperArrayByCategory = wallpapers.filter((wallpaper) => {
-            return wallpaper.category === category
-        })
-        this.setState({
-            wallpaperArray: wallpaperArrayByCategory
-        });
+        if (category === 'all') {
+            this.setState({
+                wallpaperArray: wallpapers
+            });
+        } else {
+            const wallpaperArrayByCategory = wallpapers.filter((wallpaper) => {
+                return wallpaper.category === category
+            })
+            this.setState({
+                wallpaperArray: wallpaperArrayByCategory
+            });
+        }
     }
 
 
     // WISHLIST FUNCTIONS ---------------------------------
-
-    // a function that adds the wallpaper to the wishlist & firebase when user clicks ‘add to wishlist’ button
-    addWallpaperToWishlist = (wallpaperToBeAdded) => {
-        // reference to database
-        const dbWishlistRef = firebase.database().ref('wishlist');
-
-        // filter through wishlist array to see if the wallpaper has already been added to the wishlist (ie: check to see if the wallpaper ID already exists within the array)
-        const filteredWishlistArray = this.state.wishlistArray.filter((wishlistWallpaper) => {
-            return wishlistWallpaper.wallpaperId === wallpaperToBeAdded.wallpaperId
-        });
-
-        // If the wallpaper has already been added to the wishlist (ie: if the ID exists in the array), then display a modal informing the user. Else, add the wallpaper object to the wishlist array
-        if (filteredWishlistArray.length >= 1) {
-            this.displayModal();
-        } else {
-            dbWishlistRef.push(wallpaperToBeAdded);
-        }
-    }
-
-    // a function that removes the wallpaper from the wishlist & firebase when user clicks the 'garbage' icon (ie: remove button)
-    removeWallpaperFromWishlist = (wallpaperId) => {
-        const dbWishlistRef = firebase.database().ref('wishlist');
-        dbWishlistRef.child(wallpaperId).remove();
-    }
 
     // a function that displays the wishlist when user clicks on the 'star' icon (ie: wishlist button)
     displayWishlist = () => {
@@ -204,20 +179,39 @@ class App extends Component {
     }
 
 
+    // CART/WISHLIST ADD & REMOVE FUNCTIONS ---------------------------------
+
+    // (1) a function that adds the wallpaper to the cart OR wishlist (& firebase) depending on if user clicks the ‘add to wishlist’ or 'add to cart' button
+    addWallpaperToCartorWishlist = (wallpaperToBeAdded, cartOrWishlist) => {
+        const dbRef = firebase.database().ref(cartOrWishlist);
+
+        // if user is trying to add to wishlist, check to see if wallpaper has already been added to wishlist before adding it, else if user is adding to cart add wallpaper without checking
+        if (cartOrWishlist === 'wishlist') {
+            // filter through wishlist array to see if the wallpaper has already been added to the wishlist (ie: check to see if the wallpaper ID already exists within the array)
+            const filteredWishlistArray = this.state.wishlistArray.filter((wishlistWallpaper) => {
+                return wishlistWallpaper.wallpaperId === wallpaperToBeAdded.wallpaperId
+            });
+
+            // if the wallpaper has already been added, then display a modal informing the user. Else, add the wallpaper object to the wishlist array
+            if (filteredWishlistArray.length >= 1) {
+                this.displayModal();
+            } else {
+                dbRef.push(wallpaperToBeAdded);
+            }
+        } 
+        else if (cartOrWishlist === 'cart') {
+            dbRef.push(wallpaperToBeAdded);
+        }
+    }
+
+    // (2) a function that removes the wallpaper from the cart OR wishlist (& firebase) when user clicks the 'garbage' icon (ie: remove button)
+    removeWallpaperFromCartorWishlist = (wallpaperId, cartOrWishlist) => {
+        const dbRef = firebase.database().ref(cartOrWishlist);
+        dbRef.child(wallpaperId).remove();
+    }
+
+
     // CART FUNCTIONS ---------------------------------
-
-    // a function that adds the wallpaper to the cart & firebase when user clicks ‘add to cart button
-    addWallpaperToCart = (wallpaperToBeAdded) => {
-        // reference to database
-        const dbCartRef = firebase.database().ref('cart');
-        dbCartRef.push(wallpaperToBeAdded);
-    }
-
-    // a function that removes the wallpaper from the cart & firebase when user clicks the 'garbage' icon (ie: remove button)
-    removeWallpaperFromCart = (wallpaperId) => {
-        const dbCartRef = firebase.database().ref('cart');
-        dbCartRef.child(wallpaperId).remove();
-    }
 
     // a function that displays the cart when user clicks on the 'shopping cart' icon (ie: cart button)
     displayCart = () => {
@@ -249,7 +243,7 @@ class App extends Component {
                         this.state.isWishlistDisplayed &&
                         <Wishlist 
                             wishlistArray={this.state.wishlistArray}
-                            removeWallpaperFromWishlist={this.removeWallpaperFromWishlist}
+                            removeWallpaperFromCartorWishlist={this.removeWallpaperFromCartorWishlist}
                             isWishlistDisplayed={this.state.isWishlistDisplayed}
                             closeWishlist={this.closeWishlist}
                         />
@@ -259,7 +253,7 @@ class App extends Component {
                         this.state.isCartDisplayed &&
                         <Cart
                             cartArray={this.state.cartArray}
-                            removeWallpaperFromCart={this.removeWallpaperFromCart}
+                            removeWallpaperFromCartorWishlist={this.removeWallpaperFromCartorWishlist}
                             isCartDisplayed={this.state.isCartDisplayed}
                             closeCart={this.closeCart}
                             cartSubtotal={this.state.cartSubtotal}
@@ -277,15 +271,13 @@ class App extends Component {
                         isArrowDisplayed={this.state.isArrowDisplayed}
                     />
                     <BrowseBy 
-                        displayAllWallpapers={this.displayAllWallpapers}
                         displayCategoryWallpapers={this.displayCategoryWallpapers}
                     />
                     <WallpaperList 
                         wallpaperArray={this.state.wallpaperArray}
                         wishlistArray={this.state.wishlistArray}
                         cartArray={this.state.cartArray}
-                        addWallpaperToWishlist={this.addWallpaperToWishlist}
-                        addWallpaperToCart={this.addWallpaperToCart}
+                        addWallpaperToCartorWishlist={this.addWallpaperToCartorWishlist}
                     />
                     </div>
                 </main>
