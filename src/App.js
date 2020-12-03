@@ -1,4 +1,3 @@
-// importing primary modules & styling
 import { Component } from 'react';
 import firebase from './firebase.js';
 import './App.css';
@@ -183,11 +182,11 @@ class App extends Component {
     displayCartorWishlist = (cartOrWishlist) => {
         if (cartOrWishlist === 'cart') {
             this.setState({
-                isCartDisplayed: true
+                isCartDisplayed: !this.state.isCartDisplayed
             });
         } else if (cartOrWishlist === 'wishlist') {
             this.setState({
-                isWishlistDisplayed: true
+                isWishlistDisplayed: !this.state.isCartDisplayed
             });
         }
     }
