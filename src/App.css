@@ -59,6 +59,22 @@ img {
     margin: 0 auto;
 }
 
+.skip-link {
+    font-size: 2rem;
+    text-align: center;
+    background-color: #8EAA83;
+    width: 100px;
+    padding: 5px;
+    position: absolute;
+    left: -1000px;
+    top: 0;
+    z-index: 40;
+}
+
+.skip-link:focus {
+    left: 0;
+}
+
 
 /* --------------- BUTTON STYLING --------------- */
 

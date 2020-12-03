@@ -225,6 +225,10 @@ class App extends Component {
     render() {
         return (
             <>
+                {/* skiplink for accessibility */}
+                <a href='#shop-wallpapers' className='skip-link'>
+                    Skip to Main Content
+				</a>
                 <Header 
                     displayCartorWishlist={this.displayCartorWishlist}
                     cartArray={this.state.cartArray}
