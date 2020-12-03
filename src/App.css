@@ -558,6 +558,10 @@ footer a {
 /* MAJOR BREAKPOINT 2: portrait tablet & landscape phone */
 @media (max-width: 768px) {
 	/* HEADER SECTION */
+	header {
+		background-attachment: scroll;
+	}
+	
 	h1 {
 		font-size: 7rem;
 	}
