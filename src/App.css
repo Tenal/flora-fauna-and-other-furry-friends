@@ -107,6 +107,7 @@ img {
 	margin-top: 10px;
 	position: relative;
 	z-index: 150;
+	min-height: 60px;
 }
 
 .exit-modal {
@@ -624,10 +625,6 @@ footer a {
 	.wishlist-container,
 	.cart-container {
 		width: 100%;
-	}
-
-	.exit-btn {
-		margin-bottom: 50px;
 	}
 }
 
