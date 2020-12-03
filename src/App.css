@@ -571,6 +571,12 @@ footer a {
 		font-size: 1.7rem;
 	}
 
+	/* WISHLIST/CART */
+	.wishlist-container,
+	.cart-container {
+		background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7)), url('https://i.ibb.co/p20yrWZ/header-banner.jpg') no-repeat center;
+	}
+
 	/* FOOTER SECTION */
 	footer div {
 		flex-direction: column;
