@@ -105,6 +105,8 @@ img {
 	font-size: 4rem;
 	align-self: flex-start;
 	margin-top: 10px;
+	position: relative;
+	z-index: 150;
 }
 
 .exit-modal {
