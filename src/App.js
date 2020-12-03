@@ -148,38 +148,7 @@ class App extends Component {
     }
 
 
-    // WISHLIST FUNCTIONS ---------------------------------
-
-    // a function that displays the wishlist when user clicks on the 'star' icon (ie: wishlist button)
-    displayWishlist = () => {
-        this.setState({
-            isWishlistDisplayed: true
-        });
-    }
-
-    // a function that closes the wishlist when user clicks on the 'exit' icon
-    closeWishlist = () => {
-        this.setState({
-            isWishlistDisplayed: !this.state.isWishlistDisplayed
-        });
-    }
-
-    // a function that displays the modal when user attempts to add a wallpaper to the wishlist that has already been added
-    displayModal = () => {
-        this.setState({
-            isModalDisplayed: !this.state.isModalDisplayed
-        });
-    }
-
-    // a function that closes the modal when user clicks on the 'exit' icon
-    closeModal = () => {
-        this.setState({
-            isModalDisplayed: !this.state.isModalDisplayed
-        });
-    }
-
-
-    // CART/WISHLIST ADD & REMOVE FUNCTIONS ---------------------------------
+    // CART/WISHLIST FUNCTIONS ---------------------------------
 
     // (1) a function that adds the wallpaper to the cart OR wishlist (& firebase) depending on if user clicks the ‘add to wishlist’ or 'add to cart' button
     addWallpaperToCartorWishlist = (wallpaperToBeAdded, cartOrWishlist) => {
@@ -210,20 +179,46 @@ class App extends Component {
         dbRef.child(wallpaperId).remove();
     }
 
+    // (3) a function that displays the cart OR wishlist depending on if user clicks the 'cart' icon (ie: cart button) or 'star' icon (ie: wishlist button)
+    displayCartorWishlist = (cartOrWishlist) => {
+        if (cartOrWishlist === 'cart') {
+            this.setState({
+                isCartDisplayed: true
+            });
+        } else if (cartOrWishlist === 'wishlist') {
+            this.setState({
+                isWishlistDisplayed: true
+            });
+        }
+    }
 
-    // CART FUNCTIONS ---------------------------------
+    // (4) a function that closes the cart OR wishlist when user clicks on the 'exit' icon (ie: close button)
+    closeCartorWishlist = (cartOrWishlist) => {
+        if (cartOrWishlist === 'cart') {
+            this.setState({
+                isCartDisplayed: !this.state.isCartDisplayed
+            });
+        } else if (cartOrWishlist === 'wishlist') {
+            this.setState({
+                isWishlistDisplayed: !this.state.isWishlistDisplayed
+            });
+        }
+    }
 
-    // a function that displays the cart when user clicks on the 'shopping cart' icon (ie: cart button)
-    displayCart = () => {
+
+    // MODAL FUNCTIONS ---------------------------------
+
+    // (1) a function that displays the modal when user attempts to add a wallpaper to the wishlist that has already been added
+    displayModal = () => {
         this.setState({
-            isCartDisplayed: true
+            isModalDisplayed: !this.state.isModalDisplayed
         });
     }
 
-    // a function that closes the cart when user clicks on the 'exit' icon
-    closeCart = () => {
+    // (2) a function that closes the modal when user clicks on the 'exit' icon
+    closeModal = () => {
         this.setState({
-            isCartDisplayed: false
+            isModalDisplayed: !this.state.isModalDisplayed
         });
     }
 
@@ -232,8 +227,7 @@ class App extends Component {
         return (
             <>
                 <Header 
-                    displayWishlist={this.displayWishlist}
-                    displayCart={this.displayCart}
+                    displayCartorWishlist={this.displayCartorWishlist}
                     cartArray={this.state.cartArray}
                 />
                 <main>
@@ -242,20 +236,20 @@ class App extends Component {
                     {
                         this.state.isWishlistDisplayed &&
                         <Wishlist 
+                            isWishlistDisplayed={this.state.isWishlistDisplayed}
                             wishlistArray={this.state.wishlistArray}
                             removeWallpaperFromCartorWishlist={this.removeWallpaperFromCartorWishlist}
-                            isWishlistDisplayed={this.state.isWishlistDisplayed}
-                            closeWishlist={this.closeWishlist}
+                            closeCartorWishlist={this.closeCartorWishlist}
                         />
                     }
                     {/* dynamically render the cart section (ie: only display the cart if the state of the cart is true) */}
                     {
                         this.state.isCartDisplayed &&
                         <Cart
+                            isCartDisplayed={this.state.isCartDisplayed}
                             cartArray={this.state.cartArray}
                             removeWallpaperFromCartorWishlist={this.removeWallpaperFromCartorWishlist}
-                            isCartDisplayed={this.state.isCartDisplayed}
-                            closeCart={this.closeCart}
+                            closeCartorWishlist={this.closeCartorWishlist}
                             cartSubtotal={this.state.cartSubtotal}
                         />
                     }

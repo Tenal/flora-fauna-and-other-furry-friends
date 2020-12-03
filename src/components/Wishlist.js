@@ -6,8 +6,8 @@ class Wishlist extends Component {
         return (
             <div className="wrapper wishlist-container">
 
-                {/* when user clicks the 'exit' icon, call the closeWishlist function in App.js which closes/hides the wishlist */}
-                <button className="exit-btn icon-btn" title="close wishlist" tabIndex="1" onClick={this.props.closeWishlist}>
+                {/* when user clicks the 'exit' icon, call the closeCartorWishlist function in App.js which will close/hide the wishlist */}
+                <button className="exit-btn icon-btn" title="close wishlist" tabIndex="1" onClick={() => { this.props.closeCartorWishlist('wishlist') }}>
                     <FontAwesomeIcon icon="times"/>
                     <span className="sr-only">An exit icon, click here to close your wishlist.</span>
                 </button>

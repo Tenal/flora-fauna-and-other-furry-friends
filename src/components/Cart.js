@@ -7,8 +7,8 @@ class Cart extends Component {
         return (
             <div className="wrapper cart-container">
 
-                {/* when user clicks the 'exit' icon, call the closeCart function in App.js which closes/hides the cart */}
-                <button className="exit-btn icon-btn" title="close wishlist" tabIndex="1" onClick={this.props.closeCart}>
+                {/* when user clicks the 'exit' icon, call the closeCartorWishlist function in App.js which will close/hide the cart */}
+                <button className="exit-btn icon-btn" title="close wishlist" tabIndex="1" onClick={() => {this.props.closeCartorWishlist('cart')}}>
                     <FontAwesomeIcon icon="times" />
                     <span className="sr-only">An exit icon, click here to close your cart.</span>
                 </button>
