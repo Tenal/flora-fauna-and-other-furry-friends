@@ -615,7 +615,6 @@ footer a {
 	}
 
 	.wallpaper-image .add-to-wishlist-btn {
-		z-index: 10;
 		opacity: 0.8;
 		display: block;
 		padding: 10px 20px 3px 20px;
