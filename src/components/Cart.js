@@ -1,5 +1,4 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import IconButton from './IconButton';
+import IconButton from './IconButton.js';
 
 const Cart = (props) => {
 
@@ -10,7 +9,7 @@ const Cart = (props) => {
             <IconButton 
                 buttonClass="exit-btn icon-btn"
                 fontIcon="times"
-                fontTitle="close wishlist"
+                fontTitle="close cart"
                 spanText="An exit icon, click here to close your cart."
                 onClickHandler={() => { props.closeCartorWishlist('cart') }}
             />
