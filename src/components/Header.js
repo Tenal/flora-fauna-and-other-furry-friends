@@ -1,4 +1,4 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import IconButton from './IconButton';
 
 const Header = (props) => {
     return (
@@ -6,16 +6,26 @@ const Header = (props) => {
             <nav>
                 <div className="wrapper nav-btn-container">
                     {/* when user clicks 'star' icon, call the displayCartorWishlist function in App.js & pass in 'wishlist' as an argument in order to open up the wishlist */}
-                    <button className="nav-btn icon-btn" onClick={() => { props.displayCartorWishlist('wishlist')}}>
-                        <FontAwesomeIcon icon="star" title="wishlist" className="star" />
-                        <span className="sr-only">A star icon, click here to access your wishlist.</span>
-                    </button>
+                    <IconButton 
+                        buttonClass="nav-btn icon-btn"
+                        fontIcon="star"
+                        fontTitle="wishlist"
+                        fontClass="star"
+                        spanText="A star icon, click here to access your wishlist."
+                        onClickHandler={() => { props.displayCartorWishlist('wishlist') }}
+                    />
+
                     {/* when user clicks 'shopping cart' icon, call the displayCartorWishlist function in App.js & pass in 'cart' as an argument in order to open up the cart */}
                     <div className="cart-btn">
-                        <button className="nav-btn icon-btn" onClick={() => { props.displayCartorWishlist('cart')}}>
-                            <FontAwesomeIcon icon="shopping-cart" title="cart" className="cart" />
-                            <span className="sr-only">A cart icon, click here to access your cart.</span>
-                        </button>
+                        <IconButton
+                            buttonClass="nav-btn icon-btn"
+                            fontIcon="shopping-cart"
+                            fontTitle="cart"
+                            fontClass="cart"
+                            spanText="A cart icon, click here to access your cart."
+                            onClickHandler={() => { props.displayCartorWishlist('cart') }}
+                        />
+
                         <div className="header-item-count">
                             {
                                 (props.cartArray.length >= 1)
