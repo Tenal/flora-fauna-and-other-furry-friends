@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const WallpaperList = (props) => {
 
     return (
-        <section className="wallpapers-section" id="shop-wallpapers">
+        <section className="wallpapers-section">
             <ul className="wallpaper-container">
                 {/* map through the wallpapers array and display the image, title, price, & 'add to wishlist' button for each one in individual cards */}
                 { props.wallpaperArray.map((wallpaper) => {

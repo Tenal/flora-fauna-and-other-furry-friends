@@ -217,7 +217,7 @@ class App extends Component {
                     displayOrCloseCartOrWishlist={this.displayOrCloseCartOrWishlist}
                     cartArray={this.state.cartArray}
                 />
-                <main>
+                <main id="shop-wallpapers">
                     <div className="wrapper main-container">
                     {/* dynamically render the wishlist section (ie: only display the wishlist if the state of the wishlist is true) */}
                     {
