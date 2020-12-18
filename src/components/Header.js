@@ -5,17 +5,17 @@ const Header = (props) => {
         <header>
             <nav>
                 <div className="wrapper nav-btn-container">
-                    {/* when user clicks 'star' icon, call the displayCartorWishlist function in App.js & pass in 'wishlist' as an argument in order to open up the wishlist */}
+                    {/* when user clicks 'star' icon, call the displayOrCloseCartOrWishlist function in App.js & pass in 'wishlist' as an argument in order to open up the wishlist */}
                     <IconButton 
                         buttonClass="nav-btn icon-btn"
                         fontIcon="star"
                         fontTitle="wishlist"
                         fontClass="star"
                         spanText="A star icon, click here to access your wishlist."
-                        onClickHandler={() => { props.displayCartorWishlist('wishlist') }}
+                        onClickHandler={() => { props.displayOrCloseCartOrWishlist('wishlist') }}
                     />
 
-                    {/* when user clicks 'shopping cart' icon, call the displayCartorWishlist function in App.js & pass in 'cart' as an argument in order to open up the cart */}
+                    {/* when user clicks 'shopping cart' icon, call the displayOrCloseCartOrWishlist function in App.js & pass in 'cart' as an argument in order to open up the cart */}
                     <div className="cart-btn">
                         <IconButton
                             buttonClass="nav-btn icon-btn"
@@ -23,7 +23,7 @@ const Header = (props) => {
                             fontTitle="cart"
                             fontClass="cart"
                             spanText="A cart icon, click here to access your cart."
-                            onClickHandler={() => { props.displayCartorWishlist('cart') }}
+                            onClickHandler={() => { props.displayOrCloseCartOrWishlist('cart') }}
                         />
 
                         <div className="header-item-count">

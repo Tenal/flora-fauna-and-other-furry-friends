@@ -162,7 +162,7 @@ class App extends Component {
 
             // if the wallpaper has already been added, then display a modal informing the user. Else, add the wallpaper object to the wishlist array
             if (filteredWishlistArray.length >= 1) {
-                this.displayModal();
+                this.displayOrCloseModal();
             } else {
                 dbRef.push(wallpaperToBeAdded);
             }
@@ -178,48 +178,32 @@ class App extends Component {
         dbRef.child(wallpaperId).remove();
     }
 
-    // (3) a function that displays the cart OR wishlist depending on if user clicks the 'cart' icon (ie: cart button) or 'star' icon (ie: wishlist button)
-    displayCartorWishlist = (cartOrWishlist) => {
+    // (3) a function that displays the cart OR wishlist depending on if user clicks the 'cart' icon (ie: cart button) or 'star' icon (ie: wishlist button), then closes the cart or wishlist when the user clicks the 'exit/close' button inside them
+    displayOrCloseCartOrWishlist = (cartOrWishlist) => {
         if (cartOrWishlist === 'cart') {
             this.setState({
                 isCartDisplayed: !this.state.isCartDisplayed
             });
-        } else if (cartOrWishlist === 'wishlist') {
-            this.setState({
-                isWishlistDisplayed: !this.state.isCartDisplayed
-            });
-        }
-    }
-
-    // (4) a function that closes the cart OR wishlist when user clicks on the 'exit' icon (ie: close button)
-    closeCartorWishlist = (cartOrWishlist) => {
-        if (cartOrWishlist === 'cart') {
-            this.setState({
-                isCartDisplayed: !this.state.isCartDisplayed
-            });
+            console.log('cart')
         } else if (cartOrWishlist === 'wishlist') {
             this.setState({
                 isWishlistDisplayed: !this.state.isWishlistDisplayed
             });
+            console.log('wishlist')
         }
     }
 
 
-    // MODAL FUNCTIONS ---------------------------------
 
-    // (1) a function that displays the modal when user attempts to add a wallpaper to the wishlist that has already been added
-    displayModal = () => {
+    // MODAL FUNCTION ---------------------------------
+
+    // (1) a function that displays the modal when user attempts to add a wallpaper to the wishlist that has already been added, and closes the modal when the user clicks the exit button inside the modal
+    displayOrCloseModal = () => {
         this.setState({
             isModalDisplayed: !this.state.isModalDisplayed
         });
     }
 
-    // (2) a function that closes the modal when user clicks on the 'exit' icon
-    closeModal = () => {
-        this.setState({
-            isModalDisplayed: !this.state.isModalDisplayed
-        });
-    }
 
 
     render() {
@@ -230,7 +214,7 @@ class App extends Component {
                     Skip to Main Content
 				</a>
                 <Header 
-                    displayCartorWishlist={this.displayCartorWishlist}
+                    displayOrCloseCartOrWishlist={this.displayOrCloseCartOrWishlist}
                     cartArray={this.state.cartArray}
                 />
                 <main>
@@ -242,7 +226,7 @@ class App extends Component {
                             isWishlistDisplayed={this.state.isWishlistDisplayed}
                             wishlistArray={this.state.wishlistArray}
                             removeWallpaperFromCartorWishlist={this.removeWallpaperFromCartorWishlist}
-                            closeCartorWishlist={this.closeCartorWishlist}
+                            displayOrCloseCartOrWishlist={this.displayOrCloseCartOrWishlist}
                         />
                     }
                     {/* dynamically render the cart section (ie: only display the cart if the state of the cart is true) */}
@@ -252,7 +236,7 @@ class App extends Component {
                             isCartDisplayed={this.state.isCartDisplayed}
                             cartArray={this.state.cartArray}
                             removeWallpaperFromCartorWishlist={this.removeWallpaperFromCartorWishlist}
-                            closeCartorWishlist={this.closeCartorWishlist}
+                            displayOrCloseCartOrWishlist={this.displayOrCloseCartOrWishlist}
                             cartSubtotal={this.state.cartSubtotal}
                         />
                     }
@@ -261,7 +245,7 @@ class App extends Component {
                         this.state.isModalDisplayed &&
                         <Modal 
                         isModalDisplayed={this.state.isModalDisplayed}
-                        closeModal={this.closeModal}
+                        displayOrCloseModal={this.displayOrCloseModal}
                         />
                     }
                     <ScrollToTop 

@@ -5,13 +5,13 @@ const Cart = (props) => {
     return (
         <div className="wrapper cart-container">
 
-            {/* when user clicks the 'exit' icon, call the closeCartorWishlist function in App.js & pass in 'cart' as an argument in order to close/hide the cart */}
+            {/* when user clicks the 'exit' icon, call the displayOrCloseCartOrWishlist function in App.js & pass in 'cart' as an argument in order to close/hide the cart */}
             <IconButton 
                 buttonClass="exit-btn icon-btn"
                 fontIcon="times"
                 fontTitle="close cart"
                 spanText="An exit icon, click here to close your cart."
-                onClickHandler={() => { props.closeCartorWishlist('cart') }}
+                onClickHandler={() => { props.displayOrCloseCartOrWishlist('cart') }}
             />
 
 
