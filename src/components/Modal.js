@@ -2,8 +2,8 @@ import IconButton from './IconButton.js';
 
 const Modal = (props) => {
     return (
-        <div className="modal">
-            <div className="modal-box">
+        <div className="modal" tabIndex="0">
+            <div className="modal-box" tabIndex="0">
                 {/* when user clicks 'exit' icon, call the displayOrCloseModal function in App.js which will close the pop-up modal */}
                 <IconButton
                     buttonClass="exit-modal exit-btn icon-btn"
@@ -11,6 +11,7 @@ const Modal = (props) => {
                     fontTitle="close modal"
                     spanText="An exit icon, click here to close this pop-up modal."
                     onClickHandler={props.displayOrCloseModal}
+                    tabIndex="0"
                 />
                 <div>
                     <h3>Oops!</h3>
