@@ -5,6 +5,7 @@ const wallpapers = [
         alt: 'a bee flying past some lavender',
         title: 'bee-utiful day',
         price: 5.99,
+        inventory: 3,
         category: 'fauna',
         wallpaperId: 'wallpaper1'
     },
@@ -13,6 +14,7 @@ const wallpapers = [
         alt: 'a dog with his tongue out',
         title: 'positive pup',
         price: 3.99,
+        inventory: 4,
         category: 'fluffy friends',
         wallpaperId: 'wallpaper2'
     },
@@ -21,6 +23,7 @@ const wallpapers = [
         alt: 'close-up of a flower',
         title: 'sunflower shrine',
         price: 4.99,
+        inventory: 2,
         category: 'flora',
         wallpaperId: 'wallpaper3'
     },
@@ -29,6 +32,7 @@ const wallpapers = [
         alt: 'two orange flowers',
         title: 'exotic bliss',
         price: 4.99,
+        inventory: 3,
         category: 'flora',
         wallpaperId: 'wallpaper4'
     },
@@ -37,6 +41,7 @@ const wallpapers = [
         alt: 'a bee standing on a large flower',
         title: 'bee mine',
         price: 5.99,
+        inventory: 3,
         category: 'fauna',
         wallpaperId: 'wallpaper5'
     },
@@ -45,6 +50,7 @@ const wallpapers = [
         alt: 'a monarch butterfly on a flower',
         title: 'flutter away',
         price: 3.99,
+        inventory: 4,
         category: 'fauna',
         wallpaperId: 'wallpaper6'
     },
@@ -53,6 +59,7 @@ const wallpapers = [
         alt: 'a leopard staring through branches',
         title: 'dinner time',
         price: 5.99,
+        inventory: 2,
         category: 'fauna',
         wallpaperId: 'wallpaper7'
     },
@@ -61,6 +68,7 @@ const wallpapers = [
         alt: 'a bee flying to lavender',
         title: 'dainty daisies',
         price: 4.99,
+        inventory: 4,
         category: 'flora',
         wallpaperId: 'wallpaper8'
     },
@@ -69,6 +77,7 @@ const wallpapers = [
         alt: 'a small beetle on a plant',
         title: 'blissful beetle',
         price: 3.99,
+        inventory: 3,
         category: 'fauna',
         wallpaperId: 'wallpaper9'
     },
@@ -77,6 +86,7 @@ const wallpapers = [
         alt: 'a field of lavender',
         title: 'lavender field',
         price: 4.99,
+        inventory: 3,
         category: 'flora',
         wallpaperId: 'wallpaper10'
     },
@@ -85,6 +95,7 @@ const wallpapers = [
         alt: 'a monarch butterfly on a flower',
         title: 'queen monarch',
         price: 3.99,
+        inventory: 2,
         category: 'fauna',
         wallpaperId: 'wallpaper11'
     },
@@ -93,6 +104,7 @@ const wallpapers = [
         alt: 'two lions looking away',
         title: 'king of the jungle',
         price: 5.99,
+        inventory: 3,
         category: 'fauna',
         wallpaperId: 'wallpaper12'
     },
@@ -101,6 +113,7 @@ const wallpapers = [
         alt: 'a closed rose',
         title: 'smell the roses',
         price: 4.99,
+        inventory: 4,
         category: 'flora',
         wallpaperId: 'wallpaper13'
     },
@@ -109,6 +122,7 @@ const wallpapers = [
         alt: 'a cat looking at the camera',
         title: 'furry friend',
         price: 3.99,
+        inventory: 3,
         category: 'fluffy friends',
         wallpaperId: 'wallpaper14'
     },
@@ -117,6 +131,7 @@ const wallpapers = [
         alt: 'a bee flying to lavender',
         title: 'buzz off',
         price: 5.99,
+        inventory: 2,
         category: 'fauna',
         wallpaperId: 'wallpaper15'
     },
@@ -125,6 +140,7 @@ const wallpapers = [
         alt: 'a leopard in a tree',
         title: 'prowling predator',
         price: 5.99,
+        inventory: 3,
         category: 'fauna',
         wallpaperId: 'wallpaper16'
     },
@@ -133,6 +149,7 @@ const wallpapers = [
         alt: 'close-up of a rose',
         title: 'kissed by a rose',
         price: 4.99,
+        inventory: 4,
         category: 'flora',
         wallpaperId: 'wallpaper17'
     },
@@ -141,6 +158,7 @@ const wallpapers = [
         alt: 'a butterfly on a flower',
         title: 'dark oasis',
         price: 3.99,
+        inventory: 2,
         category: 'fauna',
         wallpaperId: 'wallpaper18'
     }
