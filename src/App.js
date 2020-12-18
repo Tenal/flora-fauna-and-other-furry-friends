@@ -127,7 +127,6 @@ class App extends Component {
         });
     }
 
-
     // BROWSE/FILTER FUNCTIONS ---------------------------------
 
     // (1) a function that filters through the wallpapers and displays only the wallpapers that match the category the user has selected (ie: 'all', 'flora', 'fauna', or 'fluffy friends')
@@ -145,7 +144,6 @@ class App extends Component {
             });
         }
     }
-
 
     // CART/WISHLIST FUNCTIONS ---------------------------------
 
@@ -184,16 +182,12 @@ class App extends Component {
             this.setState({
                 isCartDisplayed: !this.state.isCartDisplayed
             });
-            console.log('cart')
         } else if (cartOrWishlist === 'wishlist') {
             this.setState({
                 isWishlistDisplayed: !this.state.isWishlistDisplayed
             });
-            console.log('wishlist')
         }
     }
-
-
 
     // MODAL FUNCTION ---------------------------------
 
@@ -219,47 +213,47 @@ class App extends Component {
                 />
                 <main id="shop-wallpapers">
                     <div className="wrapper main-container">
-                    {/* dynamically render the wishlist section (ie: only display the wishlist if the state of the wishlist is true) */}
-                    {
-                        this.state.isWishlistDisplayed &&
-                        <Wishlist 
-                            isWishlistDisplayed={this.state.isWishlistDisplayed}
+                        {/* dynamically render the wishlist section (ie: only display the wishlist if the state of the wishlist is true) */}
+                        {
+                            this.state.isWishlistDisplayed &&
+                            <Wishlist 
+                                isWishlistDisplayed={this.state.isWishlistDisplayed}
+                                wishlistArray={this.state.wishlistArray}
+                                removeWallpaperFromCartorWishlist={this.removeWallpaperFromCartorWishlist}
+                                displayOrCloseCartOrWishlist={this.displayOrCloseCartOrWishlist}
+                            />
+                        }
+                        {/* dynamically render the cart section (ie: only display the cart if the state of the cart is true) */}
+                        {
+                            this.state.isCartDisplayed &&
+                            <Cart
+                                isCartDisplayed={this.state.isCartDisplayed}
+                                cartArray={this.state.cartArray}
+                                removeWallpaperFromCartorWishlist={this.removeWallpaperFromCartorWishlist}
+                                displayOrCloseCartOrWishlist={this.displayOrCloseCartOrWishlist}
+                                cartSubtotal={this.state.cartSubtotal}
+                            />
+                        }
+                        {/* dynamically render the modal (ie: only display the modal if the state of the modal is true) */}
+                        {
+                            this.state.isModalDisplayed &&
+                            <Modal 
+                            isModalDisplayed={this.state.isModalDisplayed}
+                            displayOrCloseModal={this.displayOrCloseModal}
+                            />
+                        }
+                        <ScrollToTop 
+                            isArrowDisplayed={this.state.isArrowDisplayed}
+                        />
+                        <BrowseBy 
+                            displayCategoryWallpapers={this.displayCategoryWallpapers}
+                        />
+                        <WallpaperList 
+                            wallpaperArray={this.state.wallpaperArray}
                             wishlistArray={this.state.wishlistArray}
-                            removeWallpaperFromCartorWishlist={this.removeWallpaperFromCartorWishlist}
-                            displayOrCloseCartOrWishlist={this.displayOrCloseCartOrWishlist}
-                        />
-                    }
-                    {/* dynamically render the cart section (ie: only display the cart if the state of the cart is true) */}
-                    {
-                        this.state.isCartDisplayed &&
-                        <Cart
-                            isCartDisplayed={this.state.isCartDisplayed}
                             cartArray={this.state.cartArray}
-                            removeWallpaperFromCartorWishlist={this.removeWallpaperFromCartorWishlist}
-                            displayOrCloseCartOrWishlist={this.displayOrCloseCartOrWishlist}
-                            cartSubtotal={this.state.cartSubtotal}
+                            addWallpaperToCartorWishlist={this.addWallpaperToCartorWishlist}
                         />
-                    }
-                    {/* dynamically render the modal (ie: only display the modal if the state of the modal is true) */}
-                    {
-                        this.state.isModalDisplayed &&
-                        <Modal 
-                        isModalDisplayed={this.state.isModalDisplayed}
-                        displayOrCloseModal={this.displayOrCloseModal}
-                        />
-                    }
-                    <ScrollToTop 
-                        isArrowDisplayed={this.state.isArrowDisplayed}
-                    />
-                    <BrowseBy 
-                        displayCategoryWallpapers={this.displayCategoryWallpapers}
-                    />
-                    <WallpaperList 
-                        wallpaperArray={this.state.wallpaperArray}
-                        wishlistArray={this.state.wishlistArray}
-                        cartArray={this.state.cartArray}
-                        addWallpaperToCartorWishlist={this.addWallpaperToCartorWishlist}
-                    />
                     </div>
                 </main>
                 <Footer />
