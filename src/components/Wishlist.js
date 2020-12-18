@@ -1,15 +1,19 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import IconButton from './IconButton.js';
 
 const Wishlist = (props) => {
 
     return (
         <div className="wrapper wishlist-container">
 
-            {/* when user clicks the 'exit' icon, call the closeCartorWishlist function in App.js & pass in 'wishlist' as an argument in order to close/hide the wishlist */}
-            <button className="exit-btn icon-btn" title="close wishlist" tabIndex="0" onClick={() => {props.closeCartorWishlist('wishlist')}}>
-                <FontAwesomeIcon icon="times"/>
-                <span className="sr-only">An exit icon, click here to close your wishlist.</span>
-            </button>
+            {/* when user clicks the 'exit' icon, call the displayOrCloseCartOrWishlist function in App.js & pass in 'wishlist' as an argument in order to close/hide the wishlist */}
+            <IconButton
+                buttonClass="exit-btn icon-btn"
+                fontIcon="times"
+                fontTitle="close wishlist"
+                spanText="An exit icon, click here to close your wishlist."
+                onClickHandler={() => { props.displayOrCloseCartOrWishlist('wishlist') }}
+            />
 
             <h2>Your Wishlist</h2>
 
@@ -24,10 +28,13 @@ const Wishlist = (props) => {
                             </div>
 
                             {/* when user clicks the 'garbage' icon, call the removeWallpaperFromCartorWishlist function in App.js & pass in 'wishlist' as an argument in order to remove the wallpaper from the wishlist */}
-                            <button className="icon-btn remove-wishlist-btn" onClick={() => {props.removeWallpaperFromCartorWishlist(wallpaper.id, 'wishlist')}}>
-                                <FontAwesomeIcon icon="trash" title="remove wallpaper" />
-                                <span className="sr-only">Garbage can icon, click here to remove this wallpaper from your wishlist.</span>
-                            </button>
+                            <IconButton
+                                buttonClass="icon-btn remove-wishlist-btn"
+                                fontIcon="trash"
+                                fontTitle="remove wallpaper"
+                                spanText="Garbage can icon, click here to remove this wallpaper from your wishlist."
+                                onClickHandler={() => { props.removeWallpaperFromCartorWishlist(wallpaper.id, 'wishlist') }}
+                            />
                         </li>
                     )
                 })}

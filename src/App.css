@@ -178,7 +178,7 @@ img {
 }
 
 .wallpaper-image:hover .add-to-wishlist-btn,
-.wallpaper-image:focus .add-to-wishlist-btn {
+.wallpaper-image:focus-within .add-to-wishlist-btn {
 	display: block;
 }
 

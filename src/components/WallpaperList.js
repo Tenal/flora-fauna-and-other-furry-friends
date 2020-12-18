@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const WallpaperList = (props) => {
 
     return (
-        <section className="wallpapers-section" id="shop-wallpapers">
+        <section className="wallpapers-section">
             <ul className="wallpaper-container">
                 {/* map through the wallpapers array and display the image, title, price, & 'add to wishlist' button for each one in individual cards */}
                 { props.wallpaperArray.map((wallpaper) => {
@@ -26,7 +26,7 @@ const WallpaperList = (props) => {
                                         : null
                                 }
                                 {/* when user clicks 'add to wishlist' button, call the addWallpaperToCartorWishlist function in App.js & pass in 'wishlist' as an argument in order to add the wallpaper to the wishlist */}
-                                <button className="add-to-btn add-to-wishlist-btn" onClick={() => props.addWallpaperToCartorWishlist(wallpaper, 'wishlist')}>add to wishlist</button>
+                                <button className="add-to-btn add-to-wishlist-btn" onClick={() => props.addWallpaperToCartorWishlist(wallpaper, 'wishlist')} tabIndex="0">add to wishlist</button>
                             </div>
                             <h2>{wallpaper.title}</h2>
                             <p>${wallpaper.price}</p>

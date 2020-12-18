@@ -1,15 +1,19 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import IconButton from './IconButton.js';
 
 const Cart = (props) => {
 
     return (
         <div className="wrapper cart-container">
 
-            {/* when user clicks the 'exit' icon, call the closeCartorWishlist function in App.js & pass in 'cart' as an argument in order to close/hide the cart */}
-            <button className="exit-btn icon-btn" title="close wishlist" tabIndex="0" onClick={() => {props.closeCartorWishlist('cart')}}>
-                <FontAwesomeIcon icon="times" />
-                <span className="sr-only">An exit icon, click here to close your cart.</span>
-            </button>
+            {/* when user clicks the 'exit' icon, call the displayOrCloseCartOrWishlist function in App.js & pass in 'cart' as an argument in order to close/hide the cart */}
+            <IconButton 
+                buttonClass="exit-btn icon-btn"
+                fontIcon="times"
+                fontTitle="close cart"
+                spanText="An exit icon, click here to close your cart."
+                onClickHandler={() => { props.displayOrCloseCartOrWishlist('cart') }}
+            />
+
 
             <h2>Your Cart</h2>
             <p className="cart-item-count"><span>{props.cartArray.length}</span> item(s) in cart</p>
@@ -28,10 +32,14 @@ const Cart = (props) => {
                                     <p>${wallpaper.price}</p>
                                 </div>
                                 {/* when user clicks the 'garbage' icon, call the removeWallpaperFromCartorWishlist function in App.js which will remove the wallpaper from the cart */}
-                                <button className="icon-btn" onClick={() => {props.removeWallpaperFromCartorWishlist(wallpaper.id, 'cart') }}>
-                                    <FontAwesomeIcon icon="trash" title="remove wallpaper" />
-                                    <span className="sr-only">Garbage can icon, click here to remove this wallpaper from your cart.</span>
-                                </button>
+                                <IconButton
+                                    buttonClass="icon-btn"
+                                    fontIcon="trash"
+                                    fontTitle="remove wallpaper"
+                                    spanText="Garbage can icon, click here to remove this wallpaper from your cart."
+                                    onClickHandler={() => { props.removeWallpaperFromCartorWishlist(wallpaper.id, 'cart') }}
+                                />
+
                             </div>
 
                         </li>
