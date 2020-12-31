@@ -1,4 +1,3 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import IconButton from './IconButton.js';
 
 const Wishlist = (props) => {
