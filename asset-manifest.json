@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/flora-fauna-and-other-furry-friends/static/css/main.44f21d15.chunk.css",
-    "main.js": "/flora-fauna-and-other-furry-friends/static/js/main.f5830688.chunk.js",
-    "main.js.map": "/flora-fauna-and-other-furry-friends/static/js/main.f5830688.chunk.js.map",
+    "main.css": "/flora-fauna-and-other-furry-friends/static/css/main.93a6f6a4.chunk.css",
+    "main.js": "/flora-fauna-and-other-furry-friends/static/js/main.9f67195b.chunk.js",
+    "main.js.map": "/flora-fauna-and-other-furry-friends/static/js/main.9f67195b.chunk.js.map",
     "runtime-main.js": "/flora-fauna-and-other-furry-friends/static/js/runtime-main.afd56f18.js",
     "runtime-main.js.map": "/flora-fauna-and-other-furry-friends/static/js/runtime-main.afd56f18.js.map",
     "static/js/2.4bf89e90.chunk.js": "/flora-fauna-and-other-furry-friends/static/js/2.4bf89e90.chunk.js",
@@ -10,13 +10,13 @@
     "static/js/3.c5b1ad19.chunk.js": "/flora-fauna-and-other-furry-friends/static/js/3.c5b1ad19.chunk.js",
     "static/js/3.c5b1ad19.chunk.js.map": "/flora-fauna-and-other-furry-friends/static/js/3.c5b1ad19.chunk.js.map",
     "index.html": "/flora-fauna-and-other-furry-friends/index.html",
-    "static/css/main.44f21d15.chunk.css.map": "/flora-fauna-and-other-furry-friends/static/css/main.44f21d15.chunk.css.map",
+    "static/css/main.93a6f6a4.chunk.css.map": "/flora-fauna-and-other-furry-friends/static/css/main.93a6f6a4.chunk.css.map",
     "static/js/2.4bf89e90.chunk.js.LICENSE.txt": "/flora-fauna-and-other-furry-friends/static/js/2.4bf89e90.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.afd56f18.js",
     "static/js/2.4bf89e90.chunk.js",
-    "static/css/main.44f21d15.chunk.css",
-    "static/js/main.f5830688.chunk.js"
+    "static/css/main.93a6f6a4.chunk.css",
+    "static/js/main.9f67195b.chunk.js"
   ]
 }
