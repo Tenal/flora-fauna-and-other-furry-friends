@@ -1,9 +1,13 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class ScrollToTop extends Component {
     constructor(props) {
         super(props);
+
+        // top of page reference
+        this.topOfPage = React.createRef();
+
         this.state = {
             isArrowDisplayed: false
         };
@@ -31,12 +35,9 @@ class ScrollToTop extends Component {
         }
     }
 
-    // a function that smoothly scrolls to the top of the page if the user clicks the 'up arrow' button
+    // a function that brings user to the top of the page if they click the 'up arrow' button
     scrollToTopOfPage = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
+        window.scrollTo(0, this.topOfPage.offsetTop);
     }
 
     render() {
