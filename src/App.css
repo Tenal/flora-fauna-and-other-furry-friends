@@ -510,18 +510,20 @@ footer {
 
 footer div {
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	margin-top: 60px;
+	text-align: center;
 }
 
 footer p {
 	font-size: 1.5rem;
 	opacity: 0.5;
+	line-height: 2.2rem;
 }
 
-footer a {
+footer span {
+	font-size: 1.3rem;
 	font-style: italic;
-	opacity: 0.4;
 }
 
 
@@ -574,17 +576,6 @@ footer a {
 	.wishlist-container,
 	.cart-container {
 		background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7)), url('https://i.ibb.co/p20yrWZ/header-banner.jpg') no-repeat center;
-	}
-
-	/* FOOTER SECTION */
-	footer div {
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
-
-	footer p:first-child {
-		margin-bottom: 8px;
 	}
 }
 
@@ -667,17 +658,7 @@ footer a {
 	}
 
 	/* FOOTER SECTION */
-	footer {
-		text-align: center;
-		font-size: 1.3rem;
-	}
-
-	footer p:first-child {
-		max-width: 200px;
-		margin-bottom: 15px;
-	}
-
-	footer p:last-child {
-		max-width: 170px;
+	footer span {
+		font-size: 1.2rem;
 	}
 }
