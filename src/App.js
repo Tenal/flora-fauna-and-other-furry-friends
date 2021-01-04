@@ -40,7 +40,7 @@ class App extends Component {
         // reference the app's database for wishlist & cart
         const dbWishlistRef = firebase.database().ref('wishlist');
         const dbCartRef = firebase.database().ref('cart');
-        
+
         // WISHLIST
         dbWishlistRef.on('value', (data) => {
             // pull any existing data from the database
@@ -201,7 +201,6 @@ class App extends Component {
     }
 
 
-
     // MODAL FUNCTION ---------------------------------
 
     // (1) a function that displays the modal when user attempts to add a wallpaper to the wishlist or cart that has already been added, and closes the modal when the user clicks the exit button inside the modal
@@ -218,7 +217,6 @@ class App extends Component {
             });
         }
     }
-
 
 
     render() {
