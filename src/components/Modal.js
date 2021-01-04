@@ -22,8 +22,8 @@ const Modal = (props) => {
                         </div>
                     :
                         <div>
-                            <h3>Uh oh!</h3>
-                            <p>Due to limited availability, customers may only purchase one copy of each wallpaper. It looks like this wallpaper is already in your cart!</p>
+                            <h3>Wow!</h3>
+                            <p>This wallpaper is already in your cart! You have complete electronic access to any purchased wallpapers, so there's no need to purchase them more than once.</p>
                         </div>
                 }
             </div>
