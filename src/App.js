@@ -29,8 +29,9 @@ class App extends Component {
             cartSubtotal: 0,
             isWishlistDisplayed: false,
             isCartDisplayed: false,
+            isArrowDisplayed: false,
             isModalDisplayed: false,
-            isArrowDisplayed: false
+            modalToBeDisplayed: ''
         }
     }
 
@@ -128,7 +129,7 @@ class App extends Component {
     }
 
 
-    // BROWSE/FILTER FUNCTIONS ---------------------------------
+    // BROWSE/FILTER FUNCTION ---------------------------------
 
     // (1) a function that filters through the wallpapers and displays only the wallpapers that match the category the user has selected (ie: 'all', 'flora', 'fauna', or 'fluffy friends')
     displayCategoryWallpapers = (category) => {
@@ -162,13 +163,21 @@ class App extends Component {
 
             // if the wallpaper has already been added, then display a modal informing the user. Else, add the wallpaper object to the wishlist array
             if (filteredWishlistArray.length >= 1) {
-                this.displayOrCloseModal();
+                this.displayOrCloseModal('wishlist');
             } else {
                 dbRef.push(wallpaperToBeAdded);
             }
         } 
         else if (cartOrWishlist === 'cart') {
-            dbRef.push(wallpaperToBeAdded);
+            const filteredCartArray = this.state.cartArray.filter((wishlistWallpaper) => {
+                return wishlistWallpaper.wallpaperId === wallpaperToBeAdded.wallpaperId
+            });
+
+            if (filteredCartArray.length >= 1) {
+                this.displayOrCloseModal('cart');
+            } else {
+                dbRef.push(wallpaperToBeAdded);
+            }
         }
     }
 
@@ -184,12 +193,10 @@ class App extends Component {
             this.setState({
                 isCartDisplayed: !this.state.isCartDisplayed
             });
-            console.log('cart')
         } else if (cartOrWishlist === 'wishlist') {
             this.setState({
                 isWishlistDisplayed: !this.state.isWishlistDisplayed
             });
-            console.log('wishlist')
         }
     }
 
@@ -197,11 +204,19 @@ class App extends Component {
 
     // MODAL FUNCTION ---------------------------------
 
-    // (1) a function that displays the modal when user attempts to add a wallpaper to the wishlist that has already been added, and closes the modal when the user clicks the exit button inside the modal
-    displayOrCloseModal = () => {
-        this.setState({
-            isModalDisplayed: !this.state.isModalDisplayed
-        });
+    // (1) a function that displays the modal when user attempts to add a wallpaper to the wishlist or cart that has already been added, and closes the modal when the user clicks the exit button inside the modal
+    displayOrCloseModal = (cartOrWishlist) => {
+        if (cartOrWishlist === 'cart') {
+            this.setState({
+                isModalDisplayed: !this.state.isModalDisplayed,
+                modalToBeDisplayed: 'cart'
+            });
+        } else if (cartOrWishlist === 'wishlist') {
+            this.setState({
+                isModalDisplayed: !this.state.isModalDisplayed,
+                modalToBeDisplayed: 'wishlist'
+            });
+        }
     }
 
 
@@ -240,12 +255,13 @@ class App extends Component {
                             cartSubtotal={this.state.cartSubtotal}
                         />
                     }
-                    {/* dynamically render the modal (ie: only display the modal if the state of the modal is true) */}
+                    {/* dynamically render the modals (ie: only display the modals if the state of the modal is true) */}
                     {
                         this.state.isModalDisplayed &&
                         <Modal 
                         isModalDisplayed={this.state.isModalDisplayed}
                         displayOrCloseModal={this.displayOrCloseModal}
+                        modalToBeDisplayed={this.state.modalToBeDisplayed}
                         />
                     }
                     <ScrollToTop 

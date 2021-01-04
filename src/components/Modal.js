@@ -10,13 +10,22 @@ const Modal = (props) => {
                     fontIcon="times"
                     fontTitle="close modal"
                     spanText="An exit icon, click here to close this pop-up modal."
-                    onClickHandler={props.displayOrCloseModal}
+                    onClickHandler={() => props.displayOrCloseModal('wishlist')}
                     tabIndex="0"
                 />
-                <div>
-                    <h3>Oops!</h3>
-                    <p>You've already added this wallpaper to your wishlist, but we're happy to see how much you love it!</p>
-                </div>
+                {
+                    (props.modalToBeDisplayed === 'wishlist')
+                    ?
+                        <div>
+                            <h3>Oops!</h3>
+                            <p>You've already added this wallpaper to your wishlist, but we're happy to see how much you love it!</p>
+                        </div>
+                    :
+                        <div>
+                            <h3>Uh oh!</h3>
+                            <p>Due to limited availability, customers may only purchase one copy of each wallpaper. It looks like this wallpaper is already in your cart!</p>
+                        </div>
+                }
             </div>
         </div>
     );
