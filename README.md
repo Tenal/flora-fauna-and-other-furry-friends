@@ -1,6 +1,6 @@
 # Flora, Fauna, & other Furry Friends
 
-Welcome! Flora, Fauna, & other Furry Friends is an interactive e-commerce application built with React. Users can browse through available wallpapers, filter them by category, and add them to either their wishlist or cart.\
+Welcome! Flora, Fauna, & other Furry Friends is an interactive e-commerce application built with React. Users can browse through available wallpapers, filter them by category, and add them to either their wishlist or cart.
 
 View the [live link](https://tenal.github.io/flora-fauna-and-other-furry-friends/)!
 
